@@ -16,7 +16,6 @@
     "compile:test": "tsc -p . --noEmit",
     "clean": "rimraf dist output",
     "generate-schema": "typescript-json-schema --required tsconfig.json Configuration -o schema/Configuration.json",
-    "test": "jest",
     "lint": "run-p -c lint:prettier lint:eslint lint:tsc",
     "lint:prettier": "prettier --check src",
     "lint:eslint": "eslint . --ext ts,tsx",

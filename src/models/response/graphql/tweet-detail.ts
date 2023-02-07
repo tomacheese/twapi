@@ -119,6 +119,7 @@ export interface GraphQLTweetDetailResponse {
                         super_follow_eligible: boolean
                         super_followed_by: boolean
                         super_following: boolean
+                        business_account?: {}
                       }
                     }
                   }
@@ -476,6 +477,7 @@ export interface GraphQLTweetDetailResponse {
                                 icon_name: string
                               }[]
                             }
+                            business_account?: {}
                           }
                         }
                       }

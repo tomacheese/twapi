@@ -1,4 +1,4 @@
-export interface CustomGraphQLUserTweetsResponse {
+export interface CustomGraphQLUserTweet {
   __typename: string
   rest_id?: string
   core?: {

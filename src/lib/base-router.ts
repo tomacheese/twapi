@@ -10,7 +10,11 @@ export abstract class BaseRouter {
   protected config: Configuration
   protected wrapper: PuppeteerWrapper
 
-  constructor(fastify: FastifyInstance, config: Configuration, wrapper: PuppeteerWrapper) {
+  constructor(
+    fastify: FastifyInstance,
+    config: Configuration,
+    wrapper: PuppeteerWrapper
+  ) {
     this.fastify = fastify
     this.config = config
     this.wrapper = wrapper

@@ -1,3 +1,3 @@
 export interface GraphQLgetAltTextPromptPreferenceResponse {
-  data: {}
+  data: {};
 }

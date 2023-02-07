@@ -94,13 +94,81 @@ async function generateCustomUserTweets() {
 
   const schema = createCompoundSchema(data)
 
-  const schemaPath = `/data/schema/custom/custom-graphql-user-tweets.json`
+  const schemaPath = `/data/schema/custom/custom-graphql-user-tweet.json`
   fs.mkdirSync(dirname(schemaPath), { recursive: true })
-  const interfacePath = `/models/response/custom/custom-graphql-user-tweets.ts`
+  const interfacePath = `/models/response/custom/custom-graphql-user-tweet.ts`
   fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
   fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `CustomGraphQLUserTweetsResponse`, {
+  const ts = await compile(schema, `CustomGraphQLUserTweet`, {
+    bannerComment: '',
+    strictIndexSignatures: true,
+    additionalProperties: false,
+  })
+  fs.writeFileSync(interfacePath, ts)
+  logger.info(`📝 ${interfacePath}`)
+}
+
+async function generateCustomTweetDetail() {
+  const logger = Logger.configure('generateCustomTweetDetail')
+  logger.info(`✨ generateCustomTweetDetail()`)
+
+  const files = await getJSONFiles('/data/debug/graphql/TweetDetail')
+  const data = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .filter((response) => {
+      const entries =
+        response.data.threaded_conversation_with_injections_v2.instructions[0]
+          .entries
+      if (!entries) {
+        return false
+      }
+
+      const tweet = entries.find((entry: { entryId: string }) =>
+        entry.entryId.startsWith('tweet-')
+      )
+      if (!tweet) {
+        return false
+      }
+
+      const tweetResult = tweet.content.itemContent?.tweet_results.result
+      if (!tweetResult) {
+        return false
+      }
+
+      return true
+    })
+    .flatMap((response) => {
+      const tweet =
+        response.data.threaded_conversation_with_injections_v2.instructions[0].entries.find(
+          (entry: { entryId: string }) => entry.entryId.startsWith('tweet-')
+        )
+      if (!tweet) {
+        throw new Error('Not found tweet')
+      }
+
+      const tweetResult = tweet.content.itemContent?.tweet_results.result
+      if (!tweetResult) {
+        throw new Error('Not found tweetResult')
+      }
+
+      return tweetResult
+    })
+
+  if (data.length === 0) {
+    logger.warn(`❌ Not found json files`)
+    return
+  }
+
+  const schema = createCompoundSchema(data)
+
+  const schemaPath = `/data/schema/custom/custom-graphql-tweet-detail.json`
+  fs.mkdirSync(dirname(schemaPath), { recursive: true })
+  const interfacePath = `/models/response/custom/custom-graphql-tweet-detail.ts`
+  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+
+  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
+  const ts = await compile(schema, `CustomGraphQLTweetDetail`, {
     bannerComment: '',
     strictIndexSignatures: true,
     additionalProperties: false,
@@ -125,6 +193,7 @@ export async function generateTypeInterfaces() {
     }
 
     await generateCustomUserTweets()
+    await generateCustomTweetDetail()
   }
 
   if (fs.existsSync('/data/debug/rest/')) {

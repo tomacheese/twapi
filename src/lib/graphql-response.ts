@@ -5,12 +5,14 @@ import { Page } from 'puppeteer-core'
 import { dirname } from 'node:path'
 import fs from 'node:fs'
 import { GraphQLLikesResponse } from '@/models/response/graphql/likes'
+import { GraphQLTweetDetailResponse } from '@/models/response/graphql/tweet-detail'
 
 type GraphQLEndPoint =
   | 'UserByScreenName'
   | 'UserByRestId'
   | 'UserTweets'
   | 'Likes'
+  | 'TweetDetail'
 
 type Return<T extends GraphQLEndPoint> = T extends 'UserByScreenName'
   ? GraphQLUserByScreenNameResponse
@@ -20,6 +22,8 @@ type Return<T extends GraphQLEndPoint> = T extends 'UserByScreenName'
   ? GraphQLUserTweetsResponse
   : T extends 'Likes'
   ? GraphQLLikesResponse
+  : T extends 'TweetDetail'
+  ? GraphQLTweetDetailResponse
   : never
 
 interface Errors {

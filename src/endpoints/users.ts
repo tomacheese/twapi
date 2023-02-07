@@ -7,7 +7,7 @@ import {
   GetUserTweetsResponse,
   GetUserWithUserIdResponse,
 } from '@/models/endpoints/users'
-import { CustomGraphQLUserTweetsResponse } from '@/models/response/custom/custom-graphql-user-tweets'
+import { CustomGraphQLUserTweet } from '@/models/response/custom/custom-graphql-user-tweet'
 import { GraphQLLikesResponse } from '@/models/response/graphql/likes'
 import { GraphQLUserTweetsResponse } from '@/models/response/graphql/user-tweets'
 import { FastifyRequest, FastifyReply } from 'fastify'
@@ -269,7 +269,7 @@ export class UsersRouter extends BaseRouter {
         )
           .filter((entry) => entry.entryId.startsWith('tweet-'))
           .flatMap((entry) => entry.content.itemContent?.tweet_results.result)
-      ) as CustomGraphQLUserTweetsResponse[]
+      ) as CustomGraphQLUserTweet[]
     ).map((tweet) => {
       return this.createStatusObject(tweet)
     })
@@ -286,13 +286,13 @@ export class UsersRouter extends BaseRouter {
         )
           .filter((entry) => entry.entryId.startsWith('tweet-'))
           .flatMap((entry) => entry.content.itemContent?.tweet_results.result)
-      ) as CustomGraphQLUserTweetsResponse[]
+      ) as CustomGraphQLUserTweet[]
     ).map((tweet) => {
       return this.createStatusObject(tweet)
     })
   }
 
-  createStatusObject(tweet: CustomGraphQLUserTweetsResponse): Status {
+  createStatusObject(tweet: CustomGraphQLUserTweet): Status {
     const legacy = tweet.legacy ?? tweet.tweet?.legacy ?? undefined
     if (!legacy) {
       throw new Error('Failed to get legacy')

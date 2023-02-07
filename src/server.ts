@@ -9,6 +9,7 @@ import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui'
 import fs from 'node:fs'
 import { DebugRouter } from './endpoints/debug'
+import { TweetsRouter } from './endpoints/tweets'
 
 /**
  * Fastify アプリケーションを構築する
@@ -56,6 +57,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   // routers
   const routers: BaseRouter[] = [
     new UsersRouter(app, config, wrapper),
+    new TweetsRouter(app, config, wrapper),
     new DebugRouter(app, config, wrapper),
   ]
 

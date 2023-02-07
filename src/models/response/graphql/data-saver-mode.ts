@@ -1,5 +1,5 @@
 export interface GraphQLDataSaverModeResponse {
   data: {
-    viewer: {}
-  }
+    viewer: {};
+  };
 }

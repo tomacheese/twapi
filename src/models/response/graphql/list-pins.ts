@@ -1,5 +1,5 @@
 export interface GraphQLListPinsResponse {
   data: {
-    viewer: {}
-  }
+    viewer: {};
+  };
 }

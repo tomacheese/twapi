@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+      - type: bind
+        source: ./src/models
+        target: /models
+    ports:
+      - 8000:8000
+      - 5900:5900
+    init: true
+    restart: always

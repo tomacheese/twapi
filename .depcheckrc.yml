@@ -1,1 +1,1 @@
-ignores: ["tsconfig-paths"]
+ignores: ['tsconfig-paths', '@types/triple-beam']

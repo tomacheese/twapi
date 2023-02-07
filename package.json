@@ -43,7 +43,7 @@
     "fastify": "4.12.0",
     "genson-js": "0.0.8",
     "json-schema-to-typescript": "11.0.3",
-    "logform": "2.5.0",
+    "logform": "2.5.1",
     "otplib": "12.0.1",
     "prettier": "2.8.3",
     "puppeteer-core": "19.6.3",

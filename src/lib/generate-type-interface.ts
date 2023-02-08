@@ -4,6 +4,9 @@ import { compile } from 'json-schema-to-typescript'
 import { Logger } from '@/lib/logger'
 import { dirname } from 'node:path'
 import { Utils } from './utils'
+import { GraphQLTweetDetailResponse } from '@/models/response/graphql/tweet-detail'
+import { GraphQLUserTweetsResponse } from '@/models/response/graphql/user-tweets'
+import { GraphQLListLatestTweetsTimelineResponse } from '@/models/response/graphql/list-latest-tweets-timeline'
 
 async function getJSONFiles(directory: string) {
   const files = fs.readdirSync(directory)
@@ -70,20 +73,15 @@ async function generateCustomUserTweets() {
   const files = await getJSONFiles('/data/debug/graphql/UserTweets')
   const data = files
     .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
-    .flatMap((d) =>
+    .flatMap((d: GraphQLUserTweetsResponse) =>
       Utils.filterUndefined(
         Utils.filterUndefined(
           d.data.user.result.timeline_v2.timeline.instructions
-            .filter(
-              (instruction: { type: string }) =>
-                instruction.type === 'TimelineAddEntries'
-            )
-            .flatMap((instruction: any[]) => instruction.entries)
+            .filter((instruction) => instruction.type === 'TimelineAddEntries')
+            .flatMap((instruction) => instruction.entries)
         )
-          .filter((entry: any) => entry.entryId.startsWith('tweet-'))
-          .flatMap(
-            (entry: any) => entry.content.itemContent?.tweet_results.result
-          )
+          .filter((entry) => entry.entryId.startsWith('tweet-'))
+          .flatMap((entry) => entry.content.itemContent?.tweet_results.result)
       )
     )
 
@@ -109,6 +107,49 @@ async function generateCustomUserTweets() {
   logger.info(`📝 ${interfacePath}`)
 }
 
+async function generateCustomListTweets() {
+  const logger = Logger.configure('generateCustomListTweets')
+  logger.info(`✨ generateCustomListTweets()`)
+
+  const files = await getJSONFiles(
+    '/data/debug/graphql/ListLatestTweetsTimeline'
+  )
+  const data = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d: GraphQLListLatestTweetsTimelineResponse) =>
+      Utils.filterUndefined(
+        Utils.filterUndefined(
+          d.data.list.tweets_timeline.timeline.instructions
+            .filter((instruction) => instruction.type === 'TimelineAddEntries')
+            .flatMap((instruction) => instruction.entries)
+        )
+          .filter((entry) => entry.entryId.startsWith('tweet-'))
+          .flatMap((entry) => entry.content.itemContent?.tweet_results.result)
+      )
+    )
+
+  if (data.length === 0) {
+    logger.warn(`❌ Not found json files`)
+    return
+  }
+
+  const schema = createCompoundSchema(data)
+
+  const schemaPath = `/data/schema/custom/custom-graphql-list-tweets.json`
+  fs.mkdirSync(dirname(schemaPath), { recursive: true })
+  const interfacePath = `/models/response/custom/custom-graphql-list-tweets.ts`
+  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+
+  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
+  const ts = await compile(schema, `CustomGraphQLListTweet`, {
+    bannerComment: '',
+    strictIndexSignatures: true,
+    additionalProperties: false,
+  })
+  fs.writeFileSync(interfacePath, ts)
+  logger.info(`📝 ${interfacePath}`)
+}
+
 async function generateCustomTweetDetail() {
   const logger = Logger.configure('generateCustomTweetDetail')
   logger.info(`✨ generateCustomTweetDetail()`)
@@ -116,7 +157,11 @@ async function generateCustomTweetDetail() {
   const files = await getJSONFiles('/data/debug/graphql/TweetDetail')
   const data = files
     .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
-    .filter((response) => {
+    .filter((response: GraphQLTweetDetailResponse) => {
+      if (!response.data.threaded_conversation_with_injections_v2) {
+        return false
+      }
+
       const entries =
         response.data.threaded_conversation_with_injections_v2.instructions[0]
           .entries
@@ -131,7 +176,15 @@ async function generateCustomTweetDetail() {
         return false
       }
 
-      const tweetResult = tweet.content.itemContent?.tweet_results.result
+      if (!tweet.content.itemContent) {
+        return false
+      }
+
+      if (!tweet.content.itemContent.tweet_results) {
+        return false
+      }
+
+      const tweetResult = tweet.content.itemContent.tweet_results.result
       if (!tweetResult) {
         return false
       }
@@ -193,6 +246,7 @@ export async function generateTypeInterfaces() {
     }
 
     await generateCustomUserTweets()
+    await generateCustomListTweets()
     await generateCustomTweetDetail()
   }
 

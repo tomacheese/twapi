@@ -289,6 +289,10 @@ export class TweetsRouter extends BaseRouter {
   getTweetDetail(
     response: GraphQLTweetDetailResponse
   ): CustomGraphQLTweetDetail {
+    if (!response.data.threaded_conversation_with_injections_v2) {
+      throw new Error('Failed to get threaded_conversation_with_injections_v2')
+    }
+
     const entries =
       response.data.threaded_conversation_with_injections_v2.instructions[0]
         .entries

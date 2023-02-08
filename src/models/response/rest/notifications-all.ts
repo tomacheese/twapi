@@ -233,6 +233,240 @@ export interface RestNotificationsAllResponse {
           }
         }
       }
+      AAAAAGMji3gAAAABiJONcizThUWtbkg0Yl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUUOs4YiYl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUX4O5F7Yl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUVZEr81Yl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      'AAAAAGMji3gAAAABiJONcizThUXYdeb-Yl8'?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUVnyBwFU8s?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUX7mrUaU8s?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUWEI_Z9Yl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUVYYeKeYl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUW72fhUYl8?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUVOzMpGU8s?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      'AAAAAGMji3gAAAABiJONcizThUW7_-7WU8s'?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
+      AAAAAGMji3gAAAABiJONcizThUVZBE2gU8s?: {
+        id: string
+        timestampMs: string
+        icon: {
+          id: string
+        }
+        message: {
+          text: string
+          entities: unknown[]
+          rtl: boolean
+        }
+        template: {
+          aggregateUserActionsV1: {
+            targetObjects: unknown[]
+            fromUsers: unknown[]
+          }
+        }
+      }
     }
   }
   timeline: {

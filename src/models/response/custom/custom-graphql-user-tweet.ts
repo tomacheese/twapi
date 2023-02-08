@@ -99,6 +99,7 @@ export interface CustomGraphQLUserTweet {
         super_follow_eligible: boolean
         super_followed_by: boolean
         super_following: boolean
+        business_account?: {}
       }
     }
   }
@@ -152,7 +153,7 @@ export interface CustomGraphQLUserTweet {
         type: string
         url: string
         features: {
-          large: {
+          large?: {
             faces: {
               x: number
               y: number
@@ -160,7 +161,7 @@ export interface CustomGraphQLUserTweet {
               w: number
             }[]
           }
-          medium: {
+          medium?: {
             faces: {
               x: number
               y: number
@@ -168,7 +169,7 @@ export interface CustomGraphQLUserTweet {
               w: number
             }[]
           }
-          small: {
+          small?: {
             faces: {
               x: number
               y: number
@@ -176,7 +177,7 @@ export interface CustomGraphQLUserTweet {
               w: number
             }[]
           }
-          orig: {
+          orig?: {
             faces: {
               x: number
               y: number
@@ -210,7 +211,7 @@ export interface CustomGraphQLUserTweet {
         original_info: {
           height: number
           width: number
-          focus_rects: {
+          focus_rects?: {
             x: number
             y: number
             w: number
@@ -304,10 +305,10 @@ export interface CustomGraphQLUserTweet {
                 normal_followers_count: number
                 pinned_tweet_ids_str: string[]
                 possibly_sensitive: boolean
-                profile_banner_extensions: {
+                profile_banner_extensions?: {
                   mediaColor: {
                     r: {
-                      ok: {
+                      ok?: {
                         palette: {
                           percentage: number
                           rgb: {
@@ -320,7 +321,7 @@ export interface CustomGraphQLUserTweet {
                     }
                   }
                 }
-                profile_banner_url: string
+                profile_banner_url?: string
                 profile_image_extensions: {
                   mediaColor: {
                     r: {
@@ -361,6 +362,7 @@ export interface CustomGraphQLUserTweet {
                   icon_name: string
                 }[]
               }
+              business_account?: {}
             }
           }
         }
@@ -395,7 +397,7 @@ export interface CustomGraphQLUserTweet {
               type: string
               url: string
               features: {
-                large: {
+                large?: {
                   faces: {
                     x: number
                     y: number
@@ -403,7 +405,7 @@ export interface CustomGraphQLUserTweet {
                     w: number
                   }[]
                 }
-                medium: {
+                medium?: {
                   faces: {
                     x: number
                     y: number
@@ -411,7 +413,7 @@ export interface CustomGraphQLUserTweet {
                     w: number
                   }[]
                 }
-                small: {
+                small?: {
                   faces: {
                     x: number
                     y: number
@@ -419,7 +421,7 @@ export interface CustomGraphQLUserTweet {
                     w: number
                   }[]
                 }
-                orig: {
+                orig?: {
                   faces: {
                     x: number
                     y: number
@@ -453,7 +455,7 @@ export interface CustomGraphQLUserTweet {
               original_info: {
                 height: number
                 width: number
-                focus_rects: {
+                focus_rects?: {
                   x: number
                   y: number
                   w: number
@@ -461,7 +463,12 @@ export interface CustomGraphQLUserTweet {
                 }[]
               }
             }[]
-            user_mentions: unknown[]
+            user_mentions: {
+              id_str: string
+              name: string
+              screen_name: string
+              indices: number[]
+            }[]
             urls: {
               display_url: string
               expanded_url: string
@@ -498,7 +505,7 @@ export interface CustomGraphQLUserTweet {
                 status: string
               }
               features: {
-                large: {
+                large?: {
                   faces: {
                     x: number
                     y: number
@@ -506,7 +513,7 @@ export interface CustomGraphQLUserTweet {
                     w: number
                   }[]
                 }
-                medium: {
+                medium?: {
                   faces: {
                     x: number
                     y: number
@@ -514,7 +521,7 @@ export interface CustomGraphQLUserTweet {
                     w: number
                   }[]
                 }
-                small: {
+                small?: {
                   faces: {
                     x: number
                     y: number
@@ -522,7 +529,7 @@ export interface CustomGraphQLUserTweet {
                     w: number
                   }[]
                 }
-                orig: {
+                orig?: {
                   faces: {
                     x: number
                     y: number
@@ -556,11 +563,26 @@ export interface CustomGraphQLUserTweet {
               original_info: {
                 height: number
                 width: number
-                focus_rects: {
+                focus_rects?: {
                   x: number
                   y: number
                   w: number
                   h: number
+                }[]
+              }
+              additional_media_info?: {
+                monetizable: boolean
+              }
+              mediaStats?: {
+                viewCount: number
+              }
+              video_info?: {
+                aspect_ratio: number[]
+                duration_millis: number
+                variants: {
+                  bitrate?: number
+                  content_type: string
+                  url: string
                 }[]
               }
             }[]
@@ -587,6 +609,12 @@ export interface CustomGraphQLUserTweet {
             expanded: string
             display: string
           }
+          in_reply_to_screen_name?: string
+          in_reply_to_status_id_str?: string
+          in_reply_to_user_id_str?: string
+          scopes?: {
+            followers: boolean
+          }
         }
         card?: {
           rest_id: string
@@ -594,9 +622,28 @@ export interface CustomGraphQLUserTweet {
             binding_values: {
               key: string
               value: {
-                string_value: string
+                string_value?: string
                 type: string
                 scribe_key?: string
+                image_value?: {
+                  height: number
+                  width: number
+                  url: string
+                }
+                user_value?: {
+                  id_str: string
+                  path: unknown[]
+                }
+                image_color_value?: {
+                  palette: {
+                    rgb: {
+                      blue: number
+                      green: number
+                      red: number
+                    }
+                    percentage: number
+                  }[]
+                }
               }
             }[]
             card_platform: {
@@ -612,7 +659,115 @@ export interface CustomGraphQLUserTweet {
             }
             name: string
             url: string
-            user_refs_results: unknown[]
+            user_refs_results: {
+              result: {
+                __typename: string
+                id: string
+                rest_id: string
+                affiliates_highlighted_label: {}
+                has_graduated_access: boolean
+                is_blue_verified: boolean
+                legacy: {
+                  blocked_by: boolean
+                  blocking: boolean
+                  follow_request_sent: boolean
+                  followed_by: boolean
+                  following: boolean
+                  muting: boolean
+                  notifications: boolean
+                  protected: boolean
+                  can_dm: boolean
+                  can_media_tag: boolean
+                  created_at: string
+                  default_profile: boolean
+                  default_profile_image: boolean
+                  description: string
+                  entities: {
+                    description: {
+                      urls: unknown[]
+                    }
+                    url: {
+                      urls: {
+                        display_url: string
+                        expanded_url: string
+                        url: string
+                        indices: number[]
+                      }[]
+                    }
+                  }
+                  fast_followers_count: number
+                  favourites_count: number
+                  followers_count: number
+                  friends_count: number
+                  has_custom_timelines: boolean
+                  is_translator: boolean
+                  listed_count: number
+                  location: string
+                  media_count: number
+                  name: string
+                  normal_followers_count: number
+                  pinned_tweet_ids_str: string[]
+                  possibly_sensitive: boolean
+                  profile_banner_extensions: {
+                    mediaColor: {
+                      r: {
+                        ok: {
+                          palette: {
+                            percentage: number
+                            rgb: {
+                              blue: number
+                              green: number
+                              red: number
+                            }
+                          }[]
+                        }
+                      }
+                    }
+                  }
+                  profile_banner_url: string
+                  profile_image_extensions: {
+                    mediaColor: {
+                      r: {
+                        ok: {
+                          palette: {
+                            percentage: number
+                            rgb: {
+                              blue: number
+                              green: number
+                              red: number
+                            }
+                          }[]
+                        }
+                      }
+                    }
+                  }
+                  profile_image_url_https: string
+                  profile_interstitial_type: string
+                  screen_name: string
+                  statuses_count: number
+                  translator_type: string
+                  url: string
+                  verified: boolean
+                  verified_type: string
+                  want_retweets: boolean
+                  withheld_in_countries: unknown[]
+                }
+                professional: {
+                  rest_id: string
+                  professional_type: string
+                  category: {
+                    id: number
+                    name: string
+                    icon_name: string
+                  }[]
+                }
+                has_nft_avatar: boolean
+                super_follow_eligible: boolean
+                super_followed_by: boolean
+                super_following: boolean
+                business_account: {}
+              }
+            }[]
           }
         }
         unified_card?: {
@@ -629,7 +784,7 @@ export interface CustomGraphQLUserTweet {
                   id: string
                   rest_id: string
                   affiliates_highlighted_label: {
-                    label: {
+                    label?: {
                       url: {
                         url: string
                         urlType: string
@@ -663,7 +818,7 @@ export interface CustomGraphQLUserTweet {
                       description: {
                         urls: unknown[]
                       }
-                      url: {
+                      url?: {
                         urls: {
                           display_url: string
                           expanded_url: string
@@ -683,7 +838,7 @@ export interface CustomGraphQLUserTweet {
                     media_count: number
                     name: string
                     normal_followers_count: number
-                    pinned_tweet_ids_str: unknown[]
+                    pinned_tweet_ids_str: string[]
                     possibly_sensitive: boolean
                     profile_banner_extensions: {
                       mediaColor: {
@@ -723,9 +878,9 @@ export interface CustomGraphQLUserTweet {
                     screen_name: string
                     statuses_count: number
                     translator_type: string
-                    url: string
+                    url?: string
                     verified: boolean
-                    verified_type: string
+                    verified_type?: string
                     want_retweets: boolean
                     withheld_in_countries: unknown[]
                   }
@@ -733,6 +888,7 @@ export interface CustomGraphQLUserTweet {
                   super_follow_eligible: boolean
                   super_followed_by: boolean
                   super_following: boolean
+                  business_account?: {}
                 }
               }
             }
@@ -759,9 +915,72 @@ export interface CustomGraphQLUserTweet {
               display_text_range: number[]
               entities: {
                 user_mentions: unknown[]
-                urls: unknown[]
-                hashtags: unknown[]
+                urls: {
+                  display_url: string
+                  expanded_url: string
+                  url: string
+                  indices: number[]
+                }[]
+                hashtags: {
+                  indices: number[]
+                  text: string
+                }[]
                 symbols: unknown[]
+                media?: {
+                  display_url: string
+                  expanded_url: string
+                  id_str: string
+                  indices: number[]
+                  media_url_https: string
+                  type: string
+                  url: string
+                  features: {
+                    large: {
+                      faces: unknown[]
+                    }
+                    medium: {
+                      faces: unknown[]
+                    }
+                    small: {
+                      faces: unknown[]
+                    }
+                    orig: {
+                      faces: unknown[]
+                    }
+                  }
+                  sizes: {
+                    large: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                    medium: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                    small: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                    thumb: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                  }
+                  original_info: {
+                    height: number
+                    width: number
+                    focus_rects: {
+                      x: number
+                      y: number
+                      w: number
+                      h: number
+                    }[]
+                  }
+                }[]
               }
               favorite_count: number
               favorited: boolean
@@ -774,9 +993,82 @@ export interface CustomGraphQLUserTweet {
               retweeted: boolean
               user_id_str: string
               id_str: string
-              self_thread: {
+              self_thread?: {
                 id_str: string
               }
+              extended_entities?: {
+                media: {
+                  display_url: string
+                  expanded_url: string
+                  id_str: string
+                  indices: number[]
+                  media_key: string
+                  media_url_https: string
+                  type: string
+                  url: string
+                  ext_media_color: {
+                    palette: {
+                      percentage: number
+                      rgb: {
+                        blue: number
+                        green: number
+                        red: number
+                      }
+                    }[]
+                  }
+                  ext_media_availability: {
+                    status: string
+                  }
+                  features: {
+                    large: {
+                      faces: unknown[]
+                    }
+                    medium: {
+                      faces: unknown[]
+                    }
+                    small: {
+                      faces: unknown[]
+                    }
+                    orig: {
+                      faces: unknown[]
+                    }
+                  }
+                  sizes: {
+                    large: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                    medium: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                    small: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                    thumb: {
+                      h: number
+                      w: number
+                      resize: string
+                    }
+                  }
+                  original_info: {
+                    height: number
+                    width: number
+                    focus_rects: {
+                      x: number
+                      y: number
+                      w: number
+                      h: number
+                    }[]
+                  }
+                }[]
+              }
+              possibly_sensitive?: boolean
+              possibly_sensitive_editable?: boolean
             }
           }
         }
@@ -808,7 +1100,7 @@ export interface CustomGraphQLUserTweet {
           status: string
         }
         features: {
-          large: {
+          large?: {
             faces: {
               x: number
               y: number
@@ -816,7 +1108,7 @@ export interface CustomGraphQLUserTweet {
               w: number
             }[]
           }
-          medium: {
+          medium?: {
             faces: {
               x: number
               y: number
@@ -824,7 +1116,7 @@ export interface CustomGraphQLUserTweet {
               w: number
             }[]
           }
-          small: {
+          small?: {
             faces: {
               x: number
               y: number
@@ -832,7 +1124,7 @@ export interface CustomGraphQLUserTweet {
               w: number
             }[]
           }
-          orig: {
+          orig?: {
             faces: {
               x: number
               y: number
@@ -866,11 +1158,141 @@ export interface CustomGraphQLUserTweet {
         original_info: {
           height: number
           width: number
-          focus_rects: {
+          focus_rects?: {
             x: number
             y: number
             w: number
             h: number
+          }[]
+        }
+        additional_media_info?: {
+          monetizable: boolean
+          source_user: {
+            user_results: {
+              result: {
+                __typename: string
+                id: string
+                rest_id: string
+                affiliates_highlighted_label: {}
+                has_graduated_access: boolean
+                is_blue_verified: boolean
+                legacy: {
+                  blocked_by: boolean
+                  blocking: boolean
+                  follow_request_sent: boolean
+                  followed_by: boolean
+                  following: boolean
+                  muting: boolean
+                  notifications: boolean
+                  protected: boolean
+                  can_dm: boolean
+                  can_media_tag: boolean
+                  created_at: string
+                  default_profile: boolean
+                  default_profile_image: boolean
+                  description: string
+                  entities: {
+                    description: {
+                      urls: {
+                        display_url: string
+                        expanded_url: string
+                        url: string
+                        indices: number[]
+                      }[]
+                    }
+                    url?: {
+                      urls: {
+                        display_url: string
+                        expanded_url: string
+                        url: string
+                        indices: number[]
+                      }[]
+                    }
+                  }
+                  fast_followers_count: number
+                  favourites_count: number
+                  followers_count: number
+                  friends_count: number
+                  has_custom_timelines: boolean
+                  is_translator: boolean
+                  listed_count: number
+                  location: string
+                  media_count: number
+                  name: string
+                  normal_followers_count: number
+                  pinned_tweet_ids_str: string[]
+                  possibly_sensitive: boolean
+                  profile_banner_extensions: {
+                    mediaColor: {
+                      r: {
+                        ok: {
+                          palette: {
+                            percentage: number
+                            rgb: {
+                              blue: number
+                              green: number
+                              red: number
+                            }
+                          }[]
+                        }
+                      }
+                    }
+                  }
+                  profile_banner_url: string
+                  profile_image_extensions: {
+                    mediaColor: {
+                      r: {
+                        ok: {
+                          palette: {
+                            percentage: number
+                            rgb: {
+                              blue: number
+                              green: number
+                              red: number
+                            }
+                          }[]
+                        }
+                      }
+                    }
+                  }
+                  profile_image_url_https: string
+                  profile_interstitial_type: string
+                  screen_name: string
+                  statuses_count: number
+                  translator_type: string
+                  verified: boolean
+                  want_retweets: boolean
+                  withheld_in_countries: unknown[]
+                  url?: string
+                }
+                professional: {
+                  rest_id: string
+                  professional_type: string
+                  category: {
+                    id: number
+                    name: string
+                    icon_name: string
+                  }[]
+                }
+                has_nft_avatar: boolean
+                super_follow_eligible: boolean
+                super_followed_by: boolean
+                super_following: boolean
+                business_account: {}
+              }
+            }
+          }
+        }
+        mediaStats?: {
+          viewCount: number
+        }
+        video_info?: {
+          aspect_ratio: number[]
+          duration_millis: number
+          variants: {
+            bitrate?: number
+            content_type: string
+            url: string
           }[]
         }
       }[]
@@ -880,6 +1302,31 @@ export interface CustomGraphQLUserTweet {
       url: string
       expanded: string
       display: string
+    }
+    in_reply_to_screen_name?: string
+    in_reply_to_user_id_str?: string
+    coordinates?: {
+      type: string
+      coordinates: number[]
+    }
+    geo?: {
+      type: string
+      coordinates: number[]
+    }
+    place?: {
+      attributes: {}
+      bounding_box: {
+        coordinates: number[][][]
+        type: string
+      }
+      contained_within: unknown[]
+      country: string
+      country_code: string
+      full_name: string
+      name: string
+      id: string
+      place_type: string
+      url: string
     }
   }
   quick_promote_eligibility?: {
@@ -1019,11 +1466,22 @@ export interface CustomGraphQLUserTweet {
             verified: boolean
             want_retweets: boolean
             withheld_in_countries: unknown[]
+            verified_type?: string
           }
           has_nft_avatar: boolean
           super_follow_eligible: boolean
           super_followed_by: boolean
           super_following: boolean
+          business_account?: {}
+          professional?: {
+            rest_id: string
+            professional_type: string
+            category: {
+              id: number
+              name: string
+              icon_name: string
+            }[]
+          }
         }
       }[]
     }
@@ -1130,6 +1588,7 @@ export interface CustomGraphQLUserTweet {
           super_follow_eligible: boolean
           super_followed_by: boolean
           super_following: boolean
+          business_account?: {}
         }
       }
     }
@@ -1289,6 +1748,7 @@ export interface CustomGraphQLUserTweet {
                   super_follow_eligible: boolean
                   super_followed_by: boolean
                   super_following: boolean
+                  business_account?: {}
                 }
               }
             }

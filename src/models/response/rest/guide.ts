@@ -10630,6 +10630,5493 @@ export interface RestGuideResponse {
           }
         }
       }
+      '1623297525066387457'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: {
+            screen_name: string
+            name: string
+            id: number
+            id_str: string
+            indices: number[]
+          }[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        card: {
+          name: string
+          url: string
+          card_type_url: string
+          binding_values: {
+            vanity_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+            domain: {
+              type: string
+              string_value: string
+            }
+            creator: {
+              type: string
+              user_value: {
+                id_str: string
+                path: unknown[]
+              }
+            }
+            site: {
+              type: string
+              user_value: {
+                id_str: string
+                path: unknown[]
+              }
+              scribe_key: string
+            }
+            title: {
+              type: string
+              string_value: string
+            }
+            description: {
+              type: string
+              string_value: string
+            }
+            thumbnail_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            thumbnail_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            summary_photo_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            photo_image_full_size_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            card_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+          }
+          users: {
+            '4174180574': {
+              id: number
+              id_str: string
+              name: string
+              screen_name: string
+              location: string
+              description: string
+              url: string
+              entities: {
+                url: {
+                  urls: {
+                    url: string
+                    expanded_url: string
+                    display_url: string
+                    indices: number[]
+                  }[]
+                }
+                description: {
+                  urls: unknown[]
+                }
+              }
+              protected: boolean
+              followers_count: number
+              fast_followers_count: number
+              normal_followers_count: number
+              friends_count: number
+              listed_count: number
+              created_at: string
+              favourites_count: number
+              utc_offset: null
+              time_zone: null
+              geo_enabled: boolean
+              verified: boolean
+              statuses_count: number
+              media_count: number
+              lang: null
+              contributors_enabled: boolean
+              is_translator: boolean
+              is_translation_enabled: boolean
+              profile_background_color: string
+              profile_background_image_url: string
+              profile_background_image_url_https: string
+              profile_background_tile: boolean
+              profile_image_url: string
+              profile_image_url_https: string
+              profile_banner_url: string
+              profile_image_extensions_sensitive_media_warning: null
+              profile_image_extensions_media_availability: null
+              profile_image_extensions_alt_text: null
+              profile_image_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_image_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_banner_extensions_sensitive_media_warning: null
+              profile_banner_extensions_media_availability: null
+              profile_banner_extensions_alt_text: null
+              profile_banner_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_banner_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_link_color: string
+              profile_sidebar_border_color: string
+              profile_sidebar_fill_color: string
+              profile_text_color: string
+              profile_use_background_image: boolean
+              has_extended_profile: boolean
+              default_profile: boolean
+              default_profile_image: boolean
+              pinned_tweet_ids: number[]
+              pinned_tweet_ids_str: string[]
+              has_custom_timelines: boolean
+              can_dm: null
+              can_media_tag: boolean
+              following: boolean
+              follow_request_sent: boolean
+              notifications: boolean
+              muting: boolean
+              blocking: boolean
+              blocked_by: boolean
+              want_retweets: boolean
+              advertiser_account_type: string
+              advertiser_account_service_levels: unknown[]
+              business_profile_state: string
+              translator_type: string
+              withheld_in_countries: unknown[]
+              followed_by: boolean
+              ext_verified_type: string
+              ext_has_nft_avatar: boolean
+              ext_is_blue_verified: boolean
+              ext: {
+                highlightedLabel: {
+                  r: {
+                    ok: {}
+                  }
+                  ttl: number
+                }
+                hasNftAvatar: {
+                  r: {
+                    ok: boolean
+                  }
+                  ttl: number
+                }
+              }
+              require_some_consent: boolean
+            }
+          }
+          card_platform: {
+            platform: {
+              device: {
+                name: string
+                version: string
+              }
+              audience: {
+                name: string
+                bucket: null
+              }
+            }
+          }
+        }
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623064226641362945'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623245251107524609'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623158196272791554'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {}
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            video_info: {
+              aspect_ratio: number[]
+              duration_millis: number
+              variants: {
+                bitrate?: number
+                content_type: string
+                url: string
+              }[]
+            }
+            features: {}
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: {
+                  ok: {
+                    viewCount: string
+                  }
+                }
+                ttl: number
+              }
+            }
+            additional_media_info: {
+              monetizable: boolean
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623242753663717377'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        self_thread: {
+          id: number
+          id_str: string
+        }
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623243495262814209'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623046122574077952'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              medium: {
+                faces: unknown[]
+              }
+              orig: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              medium: {
+                faces: unknown[]
+              }
+              orig: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        self_thread: {
+          id: number
+          id_str: string
+        }
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623110801505783808'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        lang: string
+        supplemental_language: null
+        self_thread: {
+          id: number
+          id_str: string
+        }
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623231188537311233'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623230149859635200'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+            }
+            sizes: {
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {}
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+            }
+            sizes: {
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            video_info: {
+              aspect_ratio: number[]
+              duration_millis: number
+              variants: {
+                bitrate?: number
+                content_type: string
+                url: string
+              }[]
+            }
+            features: {}
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: {
+                  ok: {
+                    viewCount: string
+                  }
+                }
+                ttl: number
+              }
+            }
+            additional_media_info: {
+              title: string
+              description: string
+              embeddable: boolean
+              monetizable: boolean
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623260359170613253'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623025200466997249'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              medium: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              medium: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623250157226844160'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              medium: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              orig: {
+                faces: unknown[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              medium: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              orig: {
+                faces: unknown[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623307047524782081'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623114180839755777'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+              medium: {
+                faces: unknown[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              large: {
+                faces: unknown[]
+              }
+              medium: {
+                faces: unknown[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623190523858292737'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        card: {
+          name: string
+          url: string
+          card_type_url: string
+          binding_values: {
+            vanity_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+            domain: {
+              type: string
+              string_value: string
+            }
+            creator: {
+              type: string
+              user_value: {
+                id_str: string
+                path: unknown[]
+              }
+            }
+            site: {
+              type: string
+              user_value: {
+                id_str: string
+                path: unknown[]
+              }
+              scribe_key: string
+            }
+            title: {
+              type: string
+              string_value: string
+            }
+            description: {
+              type: string
+              string_value: string
+            }
+            thumbnail_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            thumbnail_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            summary_photo_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            photo_image_full_size_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            card_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+          }
+          users: {
+            '46588298': {
+              id: number
+              id_str: string
+              name: string
+              screen_name: string
+              location: string
+              description: string
+              url: string
+              entities: {
+                url: {
+                  urls: {
+                    url: string
+                    expanded_url: string
+                    display_url: string
+                    indices: number[]
+                  }[]
+                }
+                description: {
+                  urls: {
+                    url: string
+                    expanded_url: string
+                    display_url: string
+                    indices: number[]
+                  }[]
+                }
+              }
+              protected: boolean
+              followers_count: number
+              fast_followers_count: number
+              normal_followers_count: number
+              friends_count: number
+              listed_count: number
+              created_at: string
+              favourites_count: number
+              utc_offset: null
+              time_zone: null
+              geo_enabled: boolean
+              verified: boolean
+              statuses_count: number
+              media_count: number
+              lang: null
+              contributors_enabled: boolean
+              is_translator: boolean
+              is_translation_enabled: boolean
+              profile_background_color: string
+              profile_background_image_url: string
+              profile_background_image_url_https: string
+              profile_background_tile: boolean
+              profile_image_url: string
+              profile_image_url_https: string
+              profile_banner_url: string
+              profile_image_extensions_sensitive_media_warning: null
+              profile_image_extensions_media_availability: null
+              profile_image_extensions_alt_text: null
+              profile_image_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_image_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_banner_extensions_sensitive_media_warning: null
+              profile_banner_extensions_media_availability: null
+              profile_banner_extensions_alt_text: null
+              profile_banner_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_banner_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_link_color: string
+              profile_sidebar_border_color: string
+              profile_sidebar_fill_color: string
+              profile_text_color: string
+              profile_use_background_image: boolean
+              has_extended_profile: boolean
+              default_profile: boolean
+              default_profile_image: boolean
+              pinned_tweet_ids: unknown[]
+              pinned_tweet_ids_str: unknown[]
+              has_custom_timelines: boolean
+              can_dm: null
+              can_media_tag: boolean
+              following: boolean
+              follow_request_sent: boolean
+              notifications: boolean
+              muting: boolean
+              blocking: boolean
+              blocked_by: boolean
+              want_retweets: boolean
+              advertiser_account_type: string
+              advertiser_account_service_levels: unknown[]
+              business_profile_state: string
+              translator_type: string
+              withheld_in_countries: unknown[]
+              followed_by: boolean
+              ext_verified_type: string
+              ext_has_nft_avatar: boolean
+              ext_is_blue_verified: boolean
+              ext: {
+                highlightedLabel: {
+                  r: {
+                    ok: {}
+                  }
+                  ttl: number
+                }
+                hasNftAvatar: {
+                  r: {
+                    ok: boolean
+                  }
+                  ttl: number
+                }
+              }
+              require_some_consent: boolean
+            }
+          }
+          card_platform: {
+            platform: {
+              device: {
+                name: string
+                version: string
+              }
+              audience: {
+                name: string
+                bucket: null
+              }
+            }
+          }
+        }
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623141018098106368'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              large: {
+                faces: unknown[]
+              }
+              medium: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              orig: {
+                faces: unknown[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              large: {
+                faces: unknown[]
+              }
+              medium: {
+                faces: unknown[]
+              }
+              small: {
+                faces: unknown[]
+              }
+              orig: {
+                faces: unknown[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623234455484907520'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623265147555807234'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623064996099031041'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623113693889445890'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        card: {
+          name: string
+          url: string
+          card_type_url: string
+          binding_values: {
+            vanity_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+            domain: {
+              type: string
+              string_value: string
+            }
+            site: {
+              type: string
+              user_value: {
+                id_str: string
+                path: unknown[]
+              }
+              scribe_key: string
+            }
+            title: {
+              type: string
+              string_value: string
+            }
+            description: {
+              type: string
+              string_value: string
+            }
+            thumbnail_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            thumbnail_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            summary_photo_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            photo_image_full_size_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            card_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+          }
+          users: {
+            '3246604891': {
+              id: number
+              id_str: string
+              name: string
+              screen_name: string
+              location: string
+              description: string
+              url: string
+              entities: {
+                url: {
+                  urls: {
+                    url: string
+                    expanded_url: string
+                    display_url: string
+                    indices: number[]
+                  }[]
+                }
+                description: {
+                  urls: {
+                    url: string
+                    expanded_url: string
+                    display_url: string
+                    indices: number[]
+                  }[]
+                }
+              }
+              protected: boolean
+              followers_count: number
+              fast_followers_count: number
+              normal_followers_count: number
+              friends_count: number
+              listed_count: number
+              created_at: string
+              favourites_count: number
+              utc_offset: null
+              time_zone: null
+              geo_enabled: boolean
+              verified: boolean
+              statuses_count: number
+              media_count: number
+              lang: null
+              contributors_enabled: boolean
+              is_translator: boolean
+              is_translation_enabled: boolean
+              profile_background_color: string
+              profile_background_image_url: string
+              profile_background_image_url_https: string
+              profile_background_tile: boolean
+              profile_image_url: string
+              profile_image_url_https: string
+              profile_banner_url: string
+              profile_image_extensions_sensitive_media_warning: null
+              profile_image_extensions_media_availability: null
+              profile_image_extensions_alt_text: null
+              profile_image_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_image_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_banner_extensions_sensitive_media_warning: null
+              profile_banner_extensions_media_availability: null
+              profile_banner_extensions_alt_text: null
+              profile_banner_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_banner_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_link_color: string
+              profile_sidebar_border_color: string
+              profile_sidebar_fill_color: string
+              profile_text_color: string
+              profile_use_background_image: boolean
+              has_extended_profile: boolean
+              default_profile: boolean
+              default_profile_image: boolean
+              pinned_tweet_ids: number[]
+              pinned_tweet_ids_str: string[]
+              has_custom_timelines: boolean
+              can_dm: null
+              can_media_tag: boolean
+              following: boolean
+              follow_request_sent: boolean
+              notifications: boolean
+              muting: boolean
+              blocking: boolean
+              blocked_by: boolean
+              want_retweets: boolean
+              advertiser_account_type: string
+              advertiser_account_service_levels: unknown[]
+              business_profile_state: string
+              translator_type: string
+              withheld_in_countries: unknown[]
+              followed_by: boolean
+              ext_is_blue_verified: boolean
+              ext_has_nft_avatar: boolean
+              ext: {
+                highlightedLabel: {
+                  r: {
+                    ok: {}
+                  }
+                  ttl: number
+                }
+                hasNftAvatar: {
+                  r: {
+                    ok: boolean
+                  }
+                  ttl: number
+                }
+              }
+              require_some_consent: boolean
+            }
+          }
+          card_platform: {
+            platform: {
+              device: {
+                name: string
+                version: string
+              }
+              audience: {
+                name: string
+                bucket: null
+              }
+            }
+          }
+        }
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623137035065196545'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        card: {
+          name: string
+          url: string
+          card_type_url: string
+          binding_values: {
+            unified_card: {
+              type: string
+              string_value: string
+            }
+            card_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+          }
+          card_platform: {
+            platform: {
+              device: {
+                name: string
+                version: string
+              }
+              audience: {
+                name: string
+                bucket: null
+              }
+            }
+          }
+        }
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623069996007194624'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: unknown[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {}
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+            }
+            sizes: {
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            video_info: {
+              aspect_ratio: number[]
+              duration_millis: number
+              variants: {
+                bitrate?: number
+                content_type: string
+                url: string
+              }[]
+            }
+            features: {}
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: {
+                  ok: {
+                    viewCount: string
+                  }
+                }
+                ttl: number
+              }
+            }
+            additional_media_info: {
+              monetizable: boolean
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        conversation_control: {
+          policy: string
+          conversation_owner: {
+            screen_name: string
+          }
+        }
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623230152288378881'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: {
+            text: string
+            indices: number[]
+          }[]
+          symbols: unknown[]
+          user_mentions: {
+            screen_name: string
+            name: string
+            id: number
+            id_str: string
+            indices: number[]
+          }[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+          }[]
+        }
+        extended_entities: {
+          media: {
+            id: number
+            id_str: string
+            indices: number[]
+            media_url: string
+            media_url_https: string
+            url: string
+            display_url: string
+            expanded_url: string
+            type: string
+            original_info: {
+              width: number
+              height: number
+              focus_rects: {
+                x: number
+                y: number
+                h: number
+                w: number
+              }[]
+            }
+            sizes: {
+              small: {
+                w: number
+                h: number
+                resize: string
+              }
+              thumb: {
+                w: number
+                h: number
+                resize: string
+              }
+              large: {
+                w: number
+                h: number
+                resize: string
+              }
+              medium: {
+                w: number
+                h: number
+                resize: string
+              }
+            }
+            features: {
+              small: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              orig: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              large: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+              medium: {
+                faces: {
+                  x: number
+                  y: number
+                  h: number
+                  w: number
+                }[]
+              }
+            }
+            media_key: string
+            ext_sensitive_media_warning: null
+            ext_media_availability: {
+              status: string
+            }
+            ext_alt_text: null
+            ext_media_color: {
+              palette: {
+                rgb: {
+                  red: number
+                  green: number
+                  blue: number
+                }
+                percentage: number
+              }[]
+            }
+            ext: {
+              mediaStats: {
+                r: string
+                ttl: number
+              }
+            }
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        lang: string
+        supplemental_language: null
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
+      '1623096940518080512'?: {
+        created_at: string
+        id: number
+        id_str: string
+        full_text: string
+        truncated: boolean
+        display_text_range: number[]
+        entities: {
+          hashtags: unknown[]
+          symbols: unknown[]
+          user_mentions: unknown[]
+          urls: {
+            url: string
+            expanded_url: string
+            display_url: string
+            indices: number[]
+          }[]
+        }
+        source: string
+        in_reply_to_status_id: null
+        in_reply_to_status_id_str: null
+        in_reply_to_user_id: null
+        in_reply_to_user_id_str: null
+        in_reply_to_screen_name: null
+        user_id: number
+        user_id_str: string
+        geo: null
+        coordinates: null
+        place: null
+        contributors: null
+        is_quote_status: boolean
+        retweet_count: number
+        favorite_count: number
+        reply_count: number
+        quote_count: number
+        conversation_id: number
+        conversation_id_str: string
+        favorited: boolean
+        retweeted: boolean
+        possibly_sensitive: boolean
+        possibly_sensitive_editable: boolean
+        card: {
+          name: string
+          url: string
+          card_type_url: string
+          binding_values: {
+            vanity_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+            domain: {
+              type: string
+              string_value: string
+            }
+            site: {
+              type: string
+              user_value: {
+                id_str: string
+                path: unknown[]
+              }
+              scribe_key: string
+            }
+            title: {
+              type: string
+              string_value: string
+            }
+            description: {
+              type: string
+              string_value: string
+            }
+            thumbnail_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            thumbnail_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            thumbnail_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            summary_photo_image_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            summary_photo_image_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_small: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_x_large: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            photo_image_full_size_color: {
+              type: string
+              image_color_value: {
+                palette: {
+                  percentage: number
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                }[]
+              }
+            }
+            photo_image_full_size_original: {
+              type: string
+              image_value: {
+                url: string
+                width: number
+                height: number
+                alt: null
+              }
+            }
+            card_url: {
+              type: string
+              string_value: string
+              scribe_key: string
+            }
+          }
+          users: {
+            '1222088257111900160': {
+              id: number
+              id_str: string
+              name: string
+              screen_name: string
+              location: string
+              description: string
+              url: string
+              entities: {
+                url: {
+                  urls: {
+                    url: string
+                    expanded_url: string
+                    display_url: string
+                    indices: number[]
+                  }[]
+                }
+                description: {
+                  urls: unknown[]
+                }
+              }
+              protected: boolean
+              followers_count: number
+              fast_followers_count: number
+              normal_followers_count: number
+              friends_count: number
+              listed_count: number
+              created_at: string
+              favourites_count: number
+              utc_offset: null
+              time_zone: null
+              geo_enabled: boolean
+              verified: boolean
+              statuses_count: number
+              media_count: number
+              lang: null
+              contributors_enabled: boolean
+              is_translator: boolean
+              is_translation_enabled: boolean
+              profile_background_color: string
+              profile_background_image_url: null
+              profile_background_image_url_https: null
+              profile_background_tile: boolean
+              profile_image_url: string
+              profile_image_url_https: string
+              profile_banner_url: string
+              profile_image_extensions_sensitive_media_warning: null
+              profile_image_extensions_media_availability: null
+              profile_image_extensions_alt_text: null
+              profile_image_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_image_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_banner_extensions_sensitive_media_warning: null
+              profile_banner_extensions_media_availability: null
+              profile_banner_extensions_alt_text: null
+              profile_banner_extensions_media_color: {
+                palette: {
+                  rgb: {
+                    red: number
+                    green: number
+                    blue: number
+                  }
+                  percentage: number
+                }[]
+              }
+              profile_banner_extensions: {
+                mediaStats: {
+                  r: {
+                    missing: null
+                  }
+                  ttl: number
+                }
+              }
+              profile_link_color: string
+              profile_sidebar_border_color: string
+              profile_sidebar_fill_color: string
+              profile_text_color: string
+              profile_use_background_image: boolean
+              has_extended_profile: boolean
+              default_profile: boolean
+              default_profile_image: boolean
+              pinned_tweet_ids: number[]
+              pinned_tweet_ids_str: string[]
+              has_custom_timelines: boolean
+              can_dm: null
+              can_media_tag: boolean
+              following: boolean
+              follow_request_sent: boolean
+              notifications: boolean
+              muting: boolean
+              blocking: boolean
+              blocked_by: boolean
+              want_retweets: boolean
+              advertiser_account_type: string
+              advertiser_account_service_levels: unknown[]
+              business_profile_state: string
+              translator_type: string
+              withheld_in_countries: unknown[]
+              followed_by: boolean
+              ext_is_blue_verified: boolean
+              ext_has_nft_avatar: boolean
+              ext: {
+                highlightedLabel: {
+                  r: {
+                    ok: {}
+                  }
+                  ttl: number
+                }
+                hasNftAvatar: {
+                  r: {
+                    ok: boolean
+                  }
+                  ttl: number
+                }
+              }
+              require_some_consent: boolean
+            }
+          }
+          card_platform: {
+            platform: {
+              device: {
+                name: string
+                version: string
+              }
+              audience: {
+                name: string
+                bucket: null
+              }
+            }
+          }
+        }
+        lang: string
+        supplemental_language: null
+        self_thread: {
+          id: number
+          id_str: string
+        }
+        ext_views: {
+          state: string
+          count: string
+        }
+        ext: {
+          unmentionInfo: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          editControl: {
+            r: {
+              ok: {
+                initial: {
+                  editTweetIds: string[]
+                  editableUntilMsecs: string
+                  editsRemaining: string
+                  isEditEligible: boolean
+                }
+              }
+            }
+            ttl: number
+          }
+        }
+      }
     }
     users: {
       '42201791'?: {
@@ -11844,6 +17331,144 @@ export interface RestGuideResponse {
         }
         require_some_consent: boolean
       }
+      '132355708'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext_verified_type: string
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
       '133684052'?: {
         id: number
         id_str: string
@@ -12217,6 +17842,138 @@ export interface RestGuideResponse {
         }
         require_some_consent: boolean
       }
+      '338935180'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
       '348643924'?: {
         id: number
         id_str: string
@@ -12320,6 +18077,135 @@ export interface RestGuideResponse {
         default_profile_image: boolean
         pinned_tweet_ids: unknown[]
         pinned_tweet_ids_str: unknown[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '350096406'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
         has_custom_timelines: boolean
         can_dm: null
         can_media_tag: boolean
@@ -12624,6 +18510,240 @@ export interface RestGuideResponse {
         }
         require_some_consent: boolean
       }
+      '497659124'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '508576491'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
       '970741633'?: {
         id: number
         id_str: string
@@ -12750,6 +18870,139 @@ export interface RestGuideResponse {
           hasNftAvatar: {
             r: {
               ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1097863915'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: unknown[]
+        pinned_tweet_ids_str: unknown[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext_verified_type: string
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
             }
             ttl: number
           }
@@ -13125,6 +19378,138 @@ export interface RestGuideResponse {
         followed_by: boolean
         ext_has_nft_avatar: boolean
         ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1610621227'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
         ext: {
           highlightedLabel: {
             r: {
@@ -13810,6 +20195,405 @@ export interface RestGuideResponse {
         }
         require_some_consent: boolean
       }
+      '2803477274'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '2805040110'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext_verified_type: string
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '3023527010'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
       '3221478144'?: {
         id: number
         id_str: string
@@ -13931,6 +20715,130 @@ export interface RestGuideResponse {
         followed_by: boolean
         ext_is_blue_verified: boolean
         ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '3868374433'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: unknown[]
+        pinned_tweet_ids_str: unknown[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
         ext: {
           highlightedLabel: {
             r: {
@@ -14196,6 +21104,139 @@ export interface RestGuideResponse {
         followed_by: boolean
         ext_is_blue_verified: boolean
         ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '4174180574'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_verified_type: string
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
         ext: {
           highlightedLabel: {
             r: {
@@ -17439,6 +24480,1811 @@ export interface RestGuideResponse {
         require_some_consent: boolean
       }
       '1428157075159355402'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1228496626236317696'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1275693845771104259'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_verified_type: string
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1442952796035325952'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: unknown[]
+        pinned_tweet_ids_str: unknown[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1053167988516380672'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: unknown[]
+        pinned_tweet_ids_str: unknown[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1420392700264673281'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1134403724170842113'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '738199700914872320'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1598347523743133696'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1133542658045988866'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: unknown[]
+        pinned_tweet_ids_str: unknown[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1165144434314399745'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1605079251471896577'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_is_blue_verified: boolean
+        ext_has_nft_avatar: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1319654833515679745'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: string
+        entities: {
+          url: {
+            urls: {
+              url: string
+              expanded_url: string
+              display_url: string
+              indices: number[]
+            }[]
+          }
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: null
+        profile_background_image_url_https: null
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1079888765080895488'?: {
+        id: number
+        id_str: string
+        name: string
+        screen_name: string
+        location: string
+        description: string
+        url: null
+        entities: {
+          description: {
+            urls: unknown[]
+          }
+        }
+        protected: boolean
+        followers_count: number
+        fast_followers_count: number
+        normal_followers_count: number
+        friends_count: number
+        listed_count: number
+        created_at: string
+        favourites_count: number
+        utc_offset: null
+        time_zone: null
+        geo_enabled: boolean
+        verified: boolean
+        statuses_count: number
+        media_count: number
+        lang: null
+        contributors_enabled: boolean
+        is_translator: boolean
+        is_translation_enabled: boolean
+        profile_background_color: string
+        profile_background_image_url: string
+        profile_background_image_url_https: string
+        profile_background_tile: boolean
+        profile_image_url: string
+        profile_image_url_https: string
+        profile_banner_url: string
+        profile_image_extensions_sensitive_media_warning: null
+        profile_image_extensions_media_availability: null
+        profile_image_extensions_alt_text: null
+        profile_image_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_image_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_banner_extensions_sensitive_media_warning: null
+        profile_banner_extensions_media_availability: null
+        profile_banner_extensions_alt_text: null
+        profile_banner_extensions_media_color: {
+          palette: {
+            rgb: {
+              red: number
+              green: number
+              blue: number
+            }
+            percentage: number
+          }[]
+        }
+        profile_banner_extensions: {
+          mediaStats: {
+            r: {
+              missing: null
+            }
+            ttl: number
+          }
+        }
+        profile_link_color: string
+        profile_sidebar_border_color: string
+        profile_sidebar_fill_color: string
+        profile_text_color: string
+        profile_use_background_image: boolean
+        has_extended_profile: boolean
+        default_profile: boolean
+        default_profile_image: boolean
+        pinned_tweet_ids: number[]
+        pinned_tweet_ids_str: string[]
+        has_custom_timelines: boolean
+        can_dm: null
+        can_media_tag: boolean
+        following: boolean
+        follow_request_sent: boolean
+        notifications: boolean
+        muting: boolean
+        blocking: boolean
+        blocked_by: boolean
+        want_retweets: boolean
+        advertiser_account_type: string
+        advertiser_account_service_levels: unknown[]
+        business_profile_state: string
+        translator_type: string
+        withheld_in_countries: unknown[]
+        followed_by: boolean
+        ext_has_nft_avatar: boolean
+        ext_is_blue_verified: boolean
+        ext: {
+          highlightedLabel: {
+            r: {
+              ok: {}
+            }
+            ttl: number
+          }
+          hasNftAvatar: {
+            r: {
+              ok: boolean
+            }
+            ttl: number
+          }
+        }
+        require_some_consent: boolean
+      }
+      '1599969125908230145'?: {
         id: number
         id_str: string
         name: string

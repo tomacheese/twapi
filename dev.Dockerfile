@@ -45,7 +45,6 @@ COPY tsconfig.json .
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
-ENV DISPLAY :99
 ENV NODE_ENV development
 ENV CHROMIUM_PATH /usr/bin/chromium-browser
 ENV CONFIG_PATH /data/config.json

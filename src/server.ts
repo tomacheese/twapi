@@ -3,7 +3,7 @@ import { loadConfig } from './config'
 import { BaseRouter } from './lib/base-router'
 import cors from '@fastify/cors'
 import { UsersRouter } from './endpoints/users'
-import { PuppeteerWrapper } from './lib/puppeteer-wrapper.class'
+import { getWrapper } from './lib/puppeteer-wrapper.class'
 import { Logger } from './lib/logger'
 import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui'
@@ -20,7 +20,7 @@ import basicAuth from '@fastify/basic-auth'
 export async function buildApp(): Promise<FastifyInstance> {
   const logger = Logger.configure('buildApp')
   const config = loadConfig()
-  const wrapper = await PuppeteerWrapper.init({
+  const wrapper = await getWrapper({
     headless: false,
     user: config.twitter.username,
     auth: {

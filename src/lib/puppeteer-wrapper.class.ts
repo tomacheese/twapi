@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import puppeteer, { Browser, Page } from 'puppeteer-core'
 import { authenticator } from 'otplib'
 import { Logger } from './logger'
+import { ChildProcess, spawn } from 'node:child_process'
 
 export interface AuthConfig {
   password?: string
@@ -25,10 +26,21 @@ export class PuppeteerWrapper {
   private static logger = Logger.configure('PuppeteerWrapper')
   private browser: Browser
   private proxy: ProxyOptions | undefined
+  private xvfbProcess: ChildProcess | undefined
+  private closed = false
+  public readonly screen: number
+  public readonly createdAt = new Date()
 
-  private constructor(browser: Browser, proxy: ProxyOptions | undefined) {
+  private constructor(
+    browser: Browser,
+    proxy: ProxyOptions | undefined,
+    screen: number,
+    xvfbProcess: ChildProcess | undefined
+  ) {
     this.browser = browser
     this.proxy = proxy
+    this.screen = screen
+    this.xvfbProcess = xvfbProcess
   }
 
   public async newPage() {
@@ -37,6 +49,14 @@ export class PuppeteerWrapper {
 
   public async close() {
     await this.browser.close()
+    if (this.xvfbProcess) {
+      this.xvfbProcess.kill()
+    }
+    this.closed = true
+  }
+
+  public isClosed() {
+    return this.closed
   }
 
   private static async newPage(browser: Browser, proxy?: ProxyOptions) {
@@ -64,38 +84,7 @@ export class PuppeteerWrapper {
     return page
   }
 
-  public async newPageIncognito(
-    options: Omit<PuppeteerWrapperOptions, 'headless' | 'proxy'>
-  ) {
-    const context = await this.browser.createIncognitoBrowserContext({
-      proxyServer: this.proxy?.server,
-    })
-    const page = await context.newPage()
-    page.setDefaultNavigationTimeout(120 * 1000)
-
-    await page.evaluateOnNewDocument(() => {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      Object.defineProperty(navigator, 'webdriver', () => {})
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      // eslint-disable-next-line no-proto
-      delete navigator.__proto__.webdriver
-    })
-
-    // プロキシ設定がある場合は適用
-    if (this.proxy && this.proxy.username && this.proxy.password) {
-      await page.authenticate({
-        username: this.proxy.username,
-        password: this.proxy.password,
-      })
-    }
-
-    await PuppeteerWrapper.login(page, options)
-
-    return page
-  }
-
-  public static async init(options: PuppeteerWrapperOptions) {
+  public static async init(screen: number, options: PuppeteerWrapperOptions) {
     const userDataDirectory = `/data/userdata/${options.user}`
     if (!fs.existsSync(userDataDirectory)) {
       fs.mkdirSync(userDataDirectory, { recursive: true })
@@ -116,6 +105,37 @@ export class PuppeteerWrapper {
     if (options.proxy && options.proxy.server) {
       puppeteerArguments.push('--proxy-server=' + options.proxy.server)
     }
+
+    let xvfbProcess: ChildProcess | undefined
+    if (screen !== 0) {
+      const logger = Logger.configure(`Xvfb:${screen}`)
+      logger.info(`🖥️ Start Xvfb process on screen ${screen}`)
+      // rm /tmp/.X*-lock
+      if (fs.existsSync(`/tmp/.X${screen}-lock`)) {
+        fs.unlinkSync(`/tmp/.X${screen}-lock`)
+      }
+
+      xvfbProcess = spawn(
+        `Xvfb`,
+        [`:${screen}`, '-ac', '-screen', '0', '600x800x16', '-listen', 'tcp'],
+        {
+          stdio: 'pipe',
+        }
+      )
+      xvfbProcess.stdout?.on('data', (data) => {
+        logger.info(data.toString())
+      })
+      xvfbProcess.stderr?.on('data', (data) => {
+        logger.error(data.toString())
+      })
+      xvfbProcess.on('close', (code) => {
+        logger.info(`Xvfb process exited with code ${code}`)
+      })
+    }
+
+    const display = `:${screen}`
+    process.env.DISPLAY = display
+
     const browser = await puppeteer.launch({
       headless: options.headless,
       executablePath: '/usr/bin/chromium-browser',
@@ -136,7 +156,7 @@ export class PuppeteerWrapper {
     await this.login(loginPage, options)
     await loginPage.close()
 
-    return new PuppeteerWrapper(browser, options.proxy)
+    return new PuppeteerWrapper(browser, options.proxy, screen, xvfbProcess)
   }
 
   private static async login(
@@ -144,7 +164,7 @@ export class PuppeteerWrapper {
     options: Omit<PuppeteerWrapperOptions, 'headless' | 'proxy'>
   ) {
     const logger = Logger.configure('PuppeteerWrapper.login')
-    logger.info('✨ Login to twitter')
+    logger.info(`✨ Login to twitter as ${options.user}`)
     await page.goto('https://twitter.com', {
       waitUntil: ['load', 'networkidle2'],
     })
@@ -214,7 +234,7 @@ export class PuppeteerWrapper {
         }, 500)
       })
     }
-    logger.info('✅ You have successfully logged in.')
+    logger.info(`✅ You have successfully logged in as ${options.user}`)
   }
 
   private static getOneTimePassword(
@@ -225,4 +245,38 @@ export class PuppeteerWrapper {
     }
     return authenticator.generate(options.auth.authCodeSecret)
   }
+}
+
+const wrappers: {
+  [key: string]: PuppeteerWrapper
+} = {}
+
+setInterval(() => {
+  for (const key of Object.keys(wrappers)) {
+    const wrapper = wrappers[key]
+    if (wrapper.isClosed()) {
+      delete wrappers[key]
+    }
+    // 1時間経過したら自動クローズ
+    if (wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60) {
+      wrapper.close()
+      delete wrappers[key]
+    }
+  }
+}, 1000)
+
+async function getNextScreen() {
+  const screens = Object.values(wrappers).map((wrapper) => wrapper.screen)
+  // 0 はデフォルトのディスプレイ
+  return Math.max(...screens, -1) + 1
+}
+
+export async function getWrapper(options: PuppeteerWrapperOptions) {
+  if (wrappers[options.user] && !wrappers[options.user].isClosed()) {
+    return wrappers[options.user]
+  }
+  const screen = await getNextScreen()
+  const wrapper = await PuppeteerWrapper.init(screen, options)
+  wrappers[options.user] = wrapper
+  return wrapper
 }

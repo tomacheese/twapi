@@ -15,5 +15,8 @@ services:
     ports:
       - 8000:8000
       - 5900:5900
+      - 5901:5901
+      - 5902:5902
+      - 5903:5903
     init: true
     restart: always

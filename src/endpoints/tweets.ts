@@ -1,5 +1,6 @@
 import { BaseRouter } from '@/lib/base-router'
 import { GraphQLResponse } from '@/lib/graphql-response'
+import { getWrapper } from '@/lib/puppeteer-wrapper.class'
 import { Utils } from '@/lib/utils'
 import { GetTweetResponse } from '@/models/endpoints/tweets'
 import { CustomGraphQLTweetDetail } from '@/models/response/custom/custom-graphql-tweet-detail'
@@ -61,13 +62,15 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const page = await this.wrapper.newPageIncognito({
+    const wrapper = await getWrapper({
+      headless: true,
       user: account.username,
       auth: {
         password: account.password,
         authCodeSecret: account.authCodeSecret,
       },
     })
+    const page = await wrapper.newPage()
     const url = `https://twitter.com/i/status/${tweetId}`
     await page.goto(url, { waitUntil: 'networkidle2' })
 
@@ -89,9 +92,11 @@ export class TweetsRouter extends BaseRouter {
     ])
 
     if (result === 'RETWEETED') {
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       await page
         .waitForSelector('div[role="menuitem"][data-testid="retweetConfirm"]')
         .then((element) => element?.click())
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     }
 
     await page.close()
@@ -103,7 +108,7 @@ export class TweetsRouter extends BaseRouter {
       return
     }
 
-    reply.code(201).send()
+    reply.code(204).send()
   }
 
   async routePostUnretweet(
@@ -121,13 +126,15 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const page = await this.wrapper.newPageIncognito({
+    const wrapper = await getWrapper({
+      headless: true,
       user: account.username,
       auth: {
         password: account.password,
         authCodeSecret: account.authCodeSecret,
       },
     })
+    const page = await wrapper.newPage()
     const url = `https://twitter.com/i/status/${tweetId}`
     await page.goto(url, { waitUntil: 'networkidle2' })
 
@@ -149,9 +156,11 @@ export class TweetsRouter extends BaseRouter {
     ])
 
     if (result === 'UNRETWEETED') {
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       await page
         .waitForSelector('div[role="menuitem"][data-testid="unretweetConfirm"]')
         .then((element) => element?.click())
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     }
 
     await page.close()
@@ -163,7 +172,7 @@ export class TweetsRouter extends BaseRouter {
       return
     }
 
-    reply.code(201).send()
+    reply.code(204).send()
   }
 
   async routePostLike(
@@ -181,13 +190,15 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const page = await this.wrapper.newPageIncognito({
+    const wrapper = await getWrapper({
+      headless: true,
       user: account.username,
       auth: {
         password: account.password,
         authCodeSecret: account.authCodeSecret,
       },
     })
+    const page = await wrapper.newPage()
     const url = `https://twitter.com/i/status/${tweetId}`
     await page.goto(url, { waitUntil: 'networkidle2' })
 
@@ -208,6 +219,7 @@ export class TweetsRouter extends BaseRouter {
         .catch(() => null),
     ])
     await page.close()
+    await wrapper.close()
 
     if (result === 'ALREADY_LIKED') {
       reply.code(409).send({
@@ -216,7 +228,7 @@ export class TweetsRouter extends BaseRouter {
       return
     }
 
-    reply.code(201).send()
+    reply.code(204).send()
   }
 
   async routePostUnlike(
@@ -234,13 +246,15 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const page = await this.wrapper.newPageIncognito({
+    const wrapper = await getWrapper({
+      headless: true,
       user: account.username,
       auth: {
         password: account.password,
         authCodeSecret: account.authCodeSecret,
       },
     })
+    const page = await wrapper.newPage()
     const url = `https://twitter.com/i/status/${tweetId}`
     await page.goto(url, { waitUntil: 'networkidle2' })
 
@@ -269,7 +283,7 @@ export class TweetsRouter extends BaseRouter {
       return
     }
 
-    reply.code(201).send()
+    reply.code(204).send()
   }
 
   getTweetDetail(

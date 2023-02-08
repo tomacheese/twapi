@@ -14,9 +14,9 @@ export class TweetsRouter extends BaseRouter {
       (fastify, _, done) => {
         fastify.get('/:tweet_id', this.routeGetTweet.bind(this))
         fastify.post('/:tweet_id/retweet', this.routePostRetweet.bind(this))
-        fastify.post('/:tweet_id/unretweet', this.routePostUnretweet.bind(this))
+        fastify.delete('/:tweet_id/retweet', this.routeDeleteRetweet.bind(this))
         fastify.post('/:tweet_id/like', this.routePostLike.bind(this))
-        fastify.post('/:tweet_id/unlike', this.routePostUnlike.bind(this))
+        fastify.delete('/:tweet_id/like', this.routeDeleteLike.bind(this))
         done()
       },
       { prefix: '/tweets' }
@@ -111,7 +111,7 @@ export class TweetsRouter extends BaseRouter {
     reply.code(204).send()
   }
 
-  async routePostUnretweet(
+  async routeDeleteRetweet(
     request: FastifyRequest<{
       Params: { tweet_id: string }
     }>,
@@ -231,7 +231,7 @@ export class TweetsRouter extends BaseRouter {
     reply.code(204).send()
   }
 
-  async routePostUnlike(
+  async routeDeleteLike(
     request: FastifyRequest<{
       Params: { tweet_id: string }
     }>,

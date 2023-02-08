@@ -1,5 +1,6 @@
 import { BaseRouter } from '@/lib/base-router'
 import { GraphQLResponse } from '@/lib/graphql-response'
+import { getWrapper } from '@/lib/puppeteer-wrapper.class'
 import { Utils } from '@/lib/utils'
 import { GetTweetResponse } from '@/models/endpoints/tweets'
 import { CustomGraphQLTweetDetail } from '@/models/response/custom/custom-graphql-tweet-detail'
@@ -8,14 +9,14 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { Status } from 'twitter-d'
 
 export class TweetsRouter extends BaseRouter {
-  // private logger = Logger.configure('TweetsRouter')
-
   init(): void {
     this.fastify.register(
       (fastify, _, done) => {
         fastify.get('/:tweet_id', this.routeGetTweet.bind(this))
-        // fastify.post('/:tweet_id/retweet', this.routePostRetweet.bind(this))
-        // fastify.post('/:tweet_id/like', this.routePostLike.bind(this))
+        fastify.post('/:tweet_id/retweet', this.routePostRetweet.bind(this))
+        fastify.post('/:tweet_id/unretweet', this.routePostUnretweet.bind(this))
+        fastify.post('/:tweet_id/like', this.routePostLike.bind(this))
+        fastify.post('/:tweet_id/unlike', this.routePostUnlike.bind(this))
         done()
       },
       { prefix: '/tweets' }
@@ -44,6 +45,245 @@ export class TweetsRouter extends BaseRouter {
 
     const result: Status = this.createStatusObject(tweetDetail)
     Utils.send<GetTweetResponse>(reply, result)
+  }
+
+  async routePostRetweet(
+    request: FastifyRequest<{
+      Params: { tweet_id: string }
+    }>,
+    reply: FastifyReply
+  ): Promise<void> {
+    const tweetId = request.params.tweet_id
+
+    const account = request.account
+    if (!account) {
+      reply.code(401).send({
+        message: 'Unauthorized',
+      })
+      return
+    }
+    const wrapper = await getWrapper({
+      headless: true,
+      user: account.username,
+      auth: {
+        password: account.password,
+        authCodeSecret: account.authCodeSecret,
+      },
+    })
+    const page = await wrapper.newPage()
+    const url = `https://twitter.com/i/status/${tweetId}`
+    await page.goto(url, { waitUntil: 'networkidle2' })
+
+    const result = await Promise.race([
+      page
+        .waitForSelector('div[role="button"][data-testid="retweet"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'RETWEETED')
+        .catch(() => null),
+      page
+        .waitForSelector('div[role="button"][data-testid="unretweet"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'ALREADY_RETWEETED')
+        .catch(() => null),
+    ])
+
+    if (result === 'RETWEETED') {
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await page
+        .waitForSelector('div[role="menuitem"][data-testid="retweetConfirm"]')
+        .then((element) => element?.click())
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+    }
+
+    await page.close()
+
+    if (result === 'ALREADY_RETWEETED') {
+      reply.code(409).send({
+        message: 'Already retweeted',
+      })
+      return
+    }
+
+    reply.code(204).send()
+  }
+
+  async routePostUnretweet(
+    request: FastifyRequest<{
+      Params: { tweet_id: string }
+    }>,
+    reply: FastifyReply
+  ): Promise<void> {
+    const tweetId = request.params.tweet_id
+
+    const account = request.account
+    if (!account) {
+      reply.code(401).send({
+        message: 'Unauthorized',
+      })
+      return
+    }
+    const wrapper = await getWrapper({
+      headless: true,
+      user: account.username,
+      auth: {
+        password: account.password,
+        authCodeSecret: account.authCodeSecret,
+      },
+    })
+    const page = await wrapper.newPage()
+    const url = `https://twitter.com/i/status/${tweetId}`
+    await page.goto(url, { waitUntil: 'networkidle2' })
+
+    const result = await Promise.race([
+      page
+        .waitForSelector('div[role="button"][data-testid="retweet"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'ALREADY_UNRETWEETED')
+        .catch(() => null),
+      page
+        .waitForSelector('div[role="button"][data-testid="unretweet"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'UNRETWEETED')
+        .catch(() => null),
+    ])
+
+    if (result === 'UNRETWEETED') {
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await page
+        .waitForSelector('div[role="menuitem"][data-testid="unretweetConfirm"]')
+        .then((element) => element?.click())
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+    }
+
+    await page.close()
+
+    if (result === 'ALREADY_UNRETWEETED') {
+      reply.code(409).send({
+        message: 'Already unretweeted',
+      })
+      return
+    }
+
+    reply.code(204).send()
+  }
+
+  async routePostLike(
+    request: FastifyRequest<{
+      Params: { tweet_id: string }
+    }>,
+    reply: FastifyReply
+  ): Promise<void> {
+    const tweetId = request.params.tweet_id
+
+    const account = request.account
+    if (!account) {
+      reply.code(401).send({
+        message: 'Unauthorized',
+      })
+      return
+    }
+    const wrapper = await getWrapper({
+      headless: true,
+      user: account.username,
+      auth: {
+        password: account.password,
+        authCodeSecret: account.authCodeSecret,
+      },
+    })
+    const page = await wrapper.newPage()
+    const url = `https://twitter.com/i/status/${tweetId}`
+    await page.goto(url, { waitUntil: 'networkidle2' })
+
+    const result = await Promise.race([
+      page
+        .waitForSelector('div[role="button"][data-testid="like"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'LIKED')
+        .catch(() => null),
+      page
+        .waitForSelector('div[role="button"][data-testid="unlike"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'ALREADY_LIKED')
+        .catch(() => null),
+    ])
+    await page.close()
+    await wrapper.close()
+
+    if (result === 'ALREADY_LIKED') {
+      reply.code(409).send({
+        message: 'Already liked',
+      })
+      return
+    }
+
+    reply.code(204).send()
+  }
+
+  async routePostUnlike(
+    request: FastifyRequest<{
+      Params: { tweet_id: string }
+    }>,
+    reply: FastifyReply
+  ): Promise<void> {
+    const tweetId = request.params.tweet_id
+
+    const account = request.account
+    if (!account) {
+      reply.code(401).send({
+        message: 'Unauthorized',
+      })
+      return
+    }
+    const wrapper = await getWrapper({
+      headless: true,
+      user: account.username,
+      auth: {
+        password: account.password,
+        authCodeSecret: account.authCodeSecret,
+      },
+    })
+    const page = await wrapper.newPage()
+    const url = `https://twitter.com/i/status/${tweetId}`
+    await page.goto(url, { waitUntil: 'networkidle2' })
+
+    const result = await Promise.race([
+      page
+        .waitForSelector('div[role="button"][data-testid="like"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'ALREADY_UNLIKED')
+        .catch(() => null),
+      page
+        .waitForSelector('div[role="button"][data-testid="unlike"]', {
+          timeout: 5000,
+        })
+        .then((element) => element?.click())
+        .then(() => 'UNLIKED')
+        .catch(() => null),
+    ])
+    await page.close()
+
+    if (result === 'ALREADY_UNLIKED') {
+      reply.code(409).send({
+        message: 'Already unliked',
+      })
+      return
+    }
+
+    reply.code(204).send()
   }
 
   getTweetDetail(

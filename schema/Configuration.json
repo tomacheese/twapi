@@ -1,9 +1,15 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "twitter": {
+    "definitions": {
+        "Account": {
             "properties": {
                 "authCodeSecret": {
+                    "type": "string"
+                },
+                "basicPassword": {
+                    "type": "string"
+                },
+                "basicUsername": {
                     "type": "string"
                 },
                 "password": {
@@ -14,6 +20,41 @@
                 }
             },
             "required": [
+                "basicPassword",
+                "basicUsername",
+                "username"
+            ],
+            "type": "object"
+        }
+    },
+    "properties": {
+        "accounts": {
+            "items": {
+                "$ref": "#/definitions/Account"
+            },
+            "type": "array"
+        },
+        "twitter": {
+            "properties": {
+                "authCodeSecret": {
+                    "type": "string"
+                },
+                "basicPassword": {
+                    "type": "string"
+                },
+                "basicUsername": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "basicPassword",
+                "basicUsername",
                 "username"
             ],
             "type": "object"

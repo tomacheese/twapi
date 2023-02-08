@@ -47,8 +47,8 @@ export interface GraphQLHomeLatestTimelineResponse {
                               }
                               url?: {
                                 urls: {
-                                  display_url: string
-                                  expanded_url: string
+                                  display_url?: string
+                                  expanded_url?: string
                                   url: string
                                   indices: number[]
                                 }[]
@@ -129,6 +129,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                               icon_name: string
                             }[]
                           }
+                          business_account?: {}
                         }
                       }
                     }
@@ -376,6 +377,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                                 super_follow_eligible: boolean
                                 super_followed_by: boolean
                                 super_following: boolean
+                                business_account?: {}
                               }
                             }
                           }
@@ -798,6 +800,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                                     professional_type: string
                                     category: unknown[]
                                   }
+                                  business_account?: {}
                                 }
                               }[]
                             }
@@ -1863,6 +1866,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                                 icon_name: string
                               }[]
                             }
+                            business_account?: {}
                           }
                         }[]
                       }
@@ -1900,7 +1904,12 @@ export interface GraphQLHomeLatestTimelineResponse {
                                 description: string
                                 entities: {
                                   description: {
-                                    urls: unknown[]
+                                    urls: {
+                                      display_url: string
+                                      expanded_url: string
+                                      url: string
+                                      indices: number[]
+                                    }[]
                                   }
                                   url: {
                                     urls: {
@@ -1971,6 +1980,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                               super_follow_eligible: boolean
                               super_followed_by: boolean
                               super_following: boolean
+                              business_account?: {}
                             }
                           }
                         }
@@ -1996,7 +2006,12 @@ export interface GraphQLHomeLatestTimelineResponse {
                           conversation_id_str: string
                           display_text_range: number[]
                           entities: {
-                            user_mentions: unknown[]
+                            user_mentions: {
+                              id_str: string
+                              name: string
+                              screen_name: string
+                              indices: number[]
+                            }[]
                             urls: {
                               display_url: string
                               expanded_url: string
@@ -2008,6 +2023,81 @@ export interface GraphQLHomeLatestTimelineResponse {
                               text: string
                             }[]
                             symbols: unknown[]
+                            media?: {
+                              display_url: string
+                              expanded_url: string
+                              id_str: string
+                              indices: number[]
+                              media_url_https: string
+                              type: string
+                              url: string
+                              features: {
+                                large: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                                medium: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                                small: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                                orig: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                              }
+                              sizes: {
+                                large: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                                medium: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                                small: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                                thumb: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                              }
+                              original_info: {
+                                height: number
+                                width: number
+                                focus_rects: {
+                                  x: number
+                                  y: number
+                                  w: number
+                                  h: number
+                                }[]
+                              }
+                            }[]
                           }
                           favorite_count: number
                           favorited: boolean
@@ -2022,6 +2112,97 @@ export interface GraphQLHomeLatestTimelineResponse {
                           retweeted: boolean
                           user_id_str: string
                           id_str: string
+                          extended_entities?: {
+                            media: {
+                              display_url: string
+                              expanded_url: string
+                              id_str: string
+                              indices: number[]
+                              media_key: string
+                              media_url_https: string
+                              type: string
+                              url: string
+                              ext_media_color: {
+                                palette: {
+                                  percentage: number
+                                  rgb: {
+                                    blue: number
+                                    green: number
+                                    red: number
+                                  }
+                                }[]
+                              }
+                              ext_media_availability: {
+                                status: string
+                              }
+                              features: {
+                                large: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                                medium: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                                small: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                                orig: {
+                                  faces: {
+                                    x: number
+                                    y: number
+                                    h: number
+                                    w: number
+                                  }[]
+                                }
+                              }
+                              sizes: {
+                                large: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                                medium: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                                small: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                                thumb: {
+                                  h: number
+                                  w: number
+                                  resize: string
+                                }
+                              }
+                              original_info: {
+                                height: number
+                                width: number
+                                focus_rects: {
+                                  x: number
+                                  y: number
+                                  w: number
+                                  h: number
+                                }[]
+                              }
+                            }[]
+                          }
                         }
                       }
                     }
@@ -2058,8 +2239,8 @@ export interface GraphQLHomeLatestTimelineResponse {
                           }
                           url?: {
                             urls: {
-                              display_url: string
-                              expanded_url: string
+                              display_url?: string
+                              expanded_url?: string
                               url: string
                               indices: number[]
                             }[]
@@ -2083,7 +2264,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                         notifications: boolean
                         pinned_tweet_ids_str: string[]
                         possibly_sensitive: boolean
-                        profile_banner_extensions: {
+                        profile_banner_extensions?: {
                           mediaColor: {
                             r: {
                               ok: {
@@ -2099,7 +2280,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                             }
                           }
                         }
-                        profile_banner_url: string
+                        profile_banner_url?: string
                         profile_image_extensions: {
                           mediaColor: {
                             r: {
@@ -2140,6 +2321,7 @@ export interface GraphQLHomeLatestTimelineResponse {
                       super_follow_eligible: boolean
                       super_followed_by: boolean
                       super_following: boolean
+                      business_account?: {}
                     }
                   }
                   disclosureType: string

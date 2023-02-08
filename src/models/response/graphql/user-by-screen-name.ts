@@ -99,7 +99,15 @@ export interface GraphQLUserByScreenNameResponse {
         super_follow_eligible: boolean
         super_followed_by: boolean
         super_following: boolean
-        legacy_extended_profile: {}
+        legacy_extended_profile: {
+          birthdate?: {
+            day: number
+            month: number
+            year?: number
+            visibility: string
+            year_visibility: string
+          }
+        }
         is_profile_translatable: boolean
         verification_info: {}
         business_account?: {}

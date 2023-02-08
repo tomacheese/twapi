@@ -6,6 +6,7 @@ import { dirname } from 'node:path'
 import fs from 'node:fs'
 import { GraphQLLikesResponse } from '@/models/response/graphql/likes'
 import { GraphQLTweetDetailResponse } from '@/models/response/graphql/tweet-detail'
+import { GraphQLListLatestTweetsTimelineResponse } from '@/models/response/graphql/list-latest-tweets-timeline'
 
 type GraphQLEndPoint =
   | 'UserByScreenName'
@@ -13,6 +14,7 @@ type GraphQLEndPoint =
   | 'UserTweets'
   | 'Likes'
   | 'TweetDetail'
+  | 'ListLatestTweetsTimeline'
 
 type Return<T extends GraphQLEndPoint> = T extends 'UserByScreenName'
   ? GraphQLUserByScreenNameResponse
@@ -24,6 +26,8 @@ type Return<T extends GraphQLEndPoint> = T extends 'UserByScreenName'
   ? GraphQLLikesResponse
   : T extends 'TweetDetail'
   ? GraphQLTweetDetailResponse
+  : T extends 'ListLatestTweetsTimeline'
+  ? GraphQLListLatestTweetsTimelineResponse
   : never
 
 interface Errors {

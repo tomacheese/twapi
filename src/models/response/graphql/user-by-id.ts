@@ -113,6 +113,7 @@ export interface GraphQLUserByRestIdResponse {
             icon_name: string
           }[]
         }
+        business_account?: {}
       }
     }
   }

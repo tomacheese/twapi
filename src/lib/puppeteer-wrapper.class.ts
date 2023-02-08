@@ -64,6 +64,37 @@ export class PuppeteerWrapper {
     return page
   }
 
+  public async newPageIncognito(
+    options: Omit<PuppeteerWrapperOptions, 'headless' | 'proxy'>
+  ) {
+    const context = await this.browser.createIncognitoBrowserContext({
+      proxyServer: this.proxy?.server,
+    })
+    const page = await context.newPage()
+    page.setDefaultNavigationTimeout(120 * 1000)
+
+    await page.evaluateOnNewDocument(() => {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      Object.defineProperty(navigator, 'webdriver', () => {})
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line no-proto
+      delete navigator.__proto__.webdriver
+    })
+
+    // プロキシ設定がある場合は適用
+    if (this.proxy && this.proxy.username && this.proxy.password) {
+      await page.authenticate({
+        username: this.proxy.username,
+        password: this.proxy.password,
+      })
+    }
+
+    await PuppeteerWrapper.login(page, options)
+
+    return page
+  }
+
   public static async init(options: PuppeteerWrapperOptions) {
     const userDataDirectory = `/data/userdata/${options.user}`
     if (!fs.existsSync(userDataDirectory)) {
@@ -108,7 +139,10 @@ export class PuppeteerWrapper {
     return new PuppeteerWrapper(browser, options.proxy)
   }
 
-  private static async login(page: Page, options: PuppeteerWrapperOptions) {
+  private static async login(
+    page: Page,
+    options: Omit<PuppeteerWrapperOptions, 'headless' | 'proxy'>
+  ) {
     const logger = Logger.configure('PuppeteerWrapper.login')
     logger.info('✨ Login to twitter')
     await page.goto('https://twitter.com', {
@@ -153,7 +187,8 @@ export class PuppeteerWrapper {
       // need auth code ?
       try {
         const authCodeInput = await page.waitForSelector(
-          'input[data-testid="ocfEnterTextTextInput"]'
+          'input[data-testid="ocfEnterTextTextInput"]',
+          { timeout: 3000 }
         )
         if (authCodeInput) {
           logger.info('🔒 Need OTP.')
@@ -167,7 +202,10 @@ export class PuppeteerWrapper {
         }
       } catch {}
 
-      await new Promise<void>((resolve) => {
+      await new Promise<void>((resolve, reject) => {
+        setTimeout(() => {
+          reject(new Error('Login timeout.'))
+        }, 10_000)
         const interval = setInterval(() => {
           if (page.url() === 'https://twitter.com/home') {
             clearInterval(interval)
@@ -177,10 +215,11 @@ export class PuppeteerWrapper {
       })
     }
     logger.info('✅ You have successfully logged in.')
-    await new Promise<void>((resolve) => setTimeout(resolve, 3000))
   }
 
-  private static getOneTimePassword(options: PuppeteerWrapperOptions) {
+  private static getOneTimePassword(
+    options: Pick<PuppeteerWrapperOptions, 'auth'>
+  ) {
     if (!options.auth || !options.auth.authCodeSecret) {
       throw new Error('authCodeSecret is not set.')
     }

@@ -10,6 +10,7 @@ import swaggerUI from '@fastify/swagger-ui'
 import fs from 'node:fs'
 import { DebugRouter } from './endpoints/debug'
 import { TweetsRouter } from './endpoints/tweets'
+import basicAuth from '@fastify/basic-auth'
 
 /**
  * Fastify アプリケーションを構築する
@@ -34,6 +35,40 @@ export async function buildApp(): Promise<FastifyInstance> {
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
+
+  // basic auth
+  app.register(basicAuth, {
+    validate: (username, password, request, _reply, done) => {
+      if (
+        config.twitter.basicUsername === username &&
+        config.twitter.basicPassword === password
+      ) {
+        done()
+        return
+      }
+      const accounts = config.accounts
+      if (!accounts) {
+        done(new Error('Invalid username or password'))
+        return
+      }
+      const account = accounts.find(
+        (account) =>
+          account.basicUsername === username &&
+          account.basicPassword === password
+      )
+      if (!account) {
+        done(new Error('Invalid username or password'))
+        return
+      }
+      request.account = account
+      done()
+    },
+    authenticate: true,
+  })
+  app.after(() => {
+    app.addHook('onRequest', app.basicAuth)
+  })
+
   const versionFile = fs.existsSync('/app/version')
     ? fs.readFileSync('/app/version', 'utf8').trim()
     : undefined

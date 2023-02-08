@@ -230,6 +230,37 @@ async function generateCustomTweetDetail() {
   logger.info(`📝 ${interfacePath}`)
 }
 
+async function generateCustomSearchAdaptiveTweet() {
+  const logger = Logger.configure('generateCustomSearchAdaptiveTweet')
+  logger.info(`✨ generateCustomSearchAdaptiveTweet()`)
+
+  const files = await getJSONFiles('/data/debug/rest/SearchAdaptive')
+  const data = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.tweets))
+
+  if (data.length === 0) {
+    logger.warn(`❌ Not found json files`)
+    return
+  }
+
+  const schema = createCompoundSchema(data)
+
+  const schemaPath = `/data/schema/custom/custom-rest-search-adaptive-tweet.json`
+  fs.mkdirSync(dirname(schemaPath), { recursive: true })
+  const interfacePath = `/models/response/custom/custom-rest-search-adaptive-tweet.ts`
+  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+
+  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
+  const ts = await compile(schema, `CustomRestSearchAdaptiveTweet`, {
+    bannerComment: '',
+    strictIndexSignatures: true,
+    additionalProperties: false,
+  })
+  fs.writeFileSync(interfacePath, ts)
+  logger.info(`📝 ${interfacePath}`)
+}
+
 export async function generateTypeInterfaces() {
   const promises = []
 
@@ -248,6 +279,7 @@ export async function generateTypeInterfaces() {
     await generateCustomUserTweets()
     await generateCustomListTweets()
     await generateCustomTweetDetail()
+    await generateCustomSearchAdaptiveTweet()
   }
 
   if (fs.existsSync('/data/debug/rest/')) {

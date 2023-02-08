@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer-core'
 import { dirname } from 'node:path'
 import fs from 'node:fs'
-import { RestSearchAdaptiveResponse } from '@/models/response/rest/search-adaptive'
+import { RestSearchAdaptiveResponse } from '@/models/response/restapi/search-adaptive'
 
 type RestEndPoint = 'SearchAdaptive'
 

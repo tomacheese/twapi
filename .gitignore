@@ -3,5 +3,6 @@ data/
 dist/
 output/
 logs/
+src/models/response/rest
 
 config.json

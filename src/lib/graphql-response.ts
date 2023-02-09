@@ -7,6 +7,8 @@ import fs from 'node:fs'
 import { GraphQLLikesResponse } from '@/models/response/graphql/likes'
 import { GraphQLTweetDetailResponse } from '@/models/response/graphql/tweet-detail'
 import { GraphQLListLatestTweetsTimelineResponse } from '@/models/response/graphql/list-latest-tweets-timeline'
+import { GraphQLFollowingResponse } from '@/models/response/graphql/following'
+import { GraphQLFollowersResponse } from '@/models/response/graphql/followers'
 
 type GraphQLEndPoint =
   | 'UserByScreenName'
@@ -15,6 +17,8 @@ type GraphQLEndPoint =
   | 'Likes'
   | 'TweetDetail'
   | 'ListLatestTweetsTimeline'
+  | 'Following'
+  | 'Followers'
 
 type Return<T extends GraphQLEndPoint> = T extends 'UserByScreenName'
   ? GraphQLUserByScreenNameResponse
@@ -28,6 +32,10 @@ type Return<T extends GraphQLEndPoint> = T extends 'UserByScreenName'
   ? GraphQLTweetDetailResponse
   : T extends 'ListLatestTweetsTimeline'
   ? GraphQLListLatestTweetsTimelineResponse
+  : T extends 'Following'
+  ? GraphQLFollowingResponse
+  : T extends 'Followers'
+  ? GraphQLFollowersResponse
   : never
 
 interface Errors {

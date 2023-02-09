@@ -119,16 +119,8 @@ export class ListsRouter extends BaseRouter {
       display_text_range: legacy.display_text_range
         ? [legacy.display_text_range[0], legacy.display_text_range[1]]
         : undefined,
-      entities: {
-        // @ts-ignore
-        urls: legacy.entities.urls,
-        // @ts-ignore
-        hashtags: legacy.entities.hashtags,
-        // @ts-ignore
-        symbols: legacy.entities.symbols,
-        // @ts-ignore
-        user_mentions: legacy.entities.user_mentions,
-      },
+      // @ts-ignore
+      entities: legacy.entities,
     }
   }
 }

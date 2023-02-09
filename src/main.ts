@@ -15,7 +15,7 @@ async function main() {
   const host = process.env.API_HOST || '0.0.0.0'
   const port = process.env.API_PORT
     ? Number.parseInt(process.env.API_PORT, 10)
-    : 8000
+    : 80
   app.listen({ host, port }, (error, address) => {
     if (error) {
       logger.error('❌ Listen error', error)

@@ -12,6 +12,7 @@ import { DebugRouter } from './endpoints/debug'
 import { TweetsRouter } from './endpoints/tweets'
 import basicAuth from '@fastify/basic-auth'
 import { ListsRouter } from './endpoints/lists'
+import { SearchRouter } from './endpoints/search'
 
 /**
  * Fastify アプリケーションを構築する
@@ -95,6 +96,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     new UsersRouter(app, config, wrapper),
     new TweetsRouter(app, config, wrapper),
     new ListsRouter(app, config, wrapper),
+    new SearchRouter(app, config, wrapper),
     new DebugRouter(app, config, wrapper),
   ]
 

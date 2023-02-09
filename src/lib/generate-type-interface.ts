@@ -24,6 +24,34 @@ async function getJSONFiles(directory: string) {
   return results
 }
 
+async function generateTypeInterfaceFromData(
+  schemaPath: string,
+  interfacePath: string,
+  name: string,
+  data: any[]
+) {
+  const logger = Logger.configure('generateTypeInterfaceFromData')
+
+  if (data.length === 0) {
+    logger.warn(`❌ Not found json files`)
+    return
+  }
+
+  const schema = createCompoundSchema(data)
+
+  fs.mkdirSync(dirname(schemaPath), { recursive: true })
+  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+
+  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
+  const ts = await compile(schema, name, {
+    bannerComment: '',
+    strictIndexSignatures: true,
+    additionalProperties: false,
+  })
+  fs.writeFileSync(interfacePath, ts)
+  logger.info(`📝 ${interfacePath}`)
+}
+
 async function generateTypeInterface(
   directory: string,
   type: string,
@@ -133,21 +161,15 @@ async function generateCustomListTweets() {
     return
   }
 
-  const schema = createCompoundSchema(data)
-
   const schemaPath = `/data/schema/custom/custom-graphql-list-tweets.json`
-  fs.mkdirSync(dirname(schemaPath), { recursive: true })
   const interfacePath = `/models/response/custom/custom-graphql-list-tweets.ts`
-  fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
-  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `CustomGraphQLListTweet`, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
-  fs.writeFileSync(interfacePath, ts)
-  logger.info(`📝 ${interfacePath}`)
+  await generateTypeInterfaceFromData(
+    schemaPath,
+    interfacePath,
+    'CustomGraphQLListTweet',
+    data
+  )
 }
 
 async function generateCustomTweetDetail() {
@@ -213,52 +235,122 @@ async function generateCustomTweetDetail() {
     return
   }
 
-  const schema = createCompoundSchema(data)
-
   const schemaPath = `/data/schema/custom/custom-graphql-tweet-detail.json`
-  fs.mkdirSync(dirname(schemaPath), { recursive: true })
   const interfacePath = `/models/response/custom/custom-graphql-tweet-detail.ts`
-  fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
-  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `CustomGraphQLTweetDetail`, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
-  fs.writeFileSync(interfacePath, ts)
-  logger.info(`📝 ${interfacePath}`)
+  await generateTypeInterfaceFromData(
+    schemaPath,
+    interfacePath,
+    'CustomGraphQLTweetDetail',
+    data
+  )
 }
 
-async function generateCustomSearchAdaptiveTweet() {
-  const logger = Logger.configure('generateCustomSearchAdaptiveTweet')
-  logger.info(`✨ generateCustomSearchAdaptiveTweet()`)
+async function generateCustomSearchAdaptive() {
+  const logger = Logger.configure('generateCustomSearchAdaptive')
+  logger.info(`✨ generateCustomSearchAdaptive()`)
 
   const files = await getJSONFiles('/data/debug/rest/SearchAdaptive')
-  const data = files
+  const tweets = files
     .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
     .flatMap((d) => Object.values(d.globalObjects.tweets))
+  const users = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.users))
+  const moments = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.moments))
+  const cards = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.cards))
+  const places = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.places))
+  const media = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.media))
+  const broadcasts = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.broadcasts))
+  const topics = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.topics))
+  const lists = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.globalObjects.lists))
+  const timeline = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d) => Object.values(d.timeline))
 
-  if (data.length === 0) {
-    logger.warn(`❌ Not found json files`)
-    return
-  }
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-tweet.json',
+    '/models/response/custom/custom-rest-search-adaptive-tweet.ts',
+    'CustomRestSearchAdaptiveTweet',
+    tweets
+  )
 
-  const schema = createCompoundSchema(data)
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-user.json',
+    '/models/response/custom/custom-rest-search-adaptive-user.ts',
+    'CustomRestSearchAdaptiveUser',
+    users
+  )
 
-  const schemaPath = `/data/schema/custom/custom-rest-search-adaptive-tweet.json`
-  fs.mkdirSync(dirname(schemaPath), { recursive: true })
-  const interfacePath = `/models/response/custom/custom-rest-search-adaptive-tweet.ts`
-  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-moment.json',
+    '/models/response/custom/custom-rest-search-adaptive-moment.ts',
+    'CustomRestSearchAdaptiveMoment',
+    moments
+  )
 
-  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `CustomRestSearchAdaptiveTweet`, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
-  fs.writeFileSync(interfacePath, ts)
-  logger.info(`📝 ${interfacePath}`)
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-card.json',
+    '/models/response/custom/custom-rest-search-adaptive-card.ts',
+    'CustomRestSearchAdaptiveCard',
+    cards
+  )
+
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-place.json',
+    '/models/response/custom/custom-rest-search-adaptive-place.ts',
+    'CustomRestSearchAdaptivePlace',
+    places
+  )
+
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-media.json',
+    '/models/response/custom/custom-rest-search-adaptive-media.ts',
+    'CustomRestSearchAdaptiveMedia',
+    media
+  )
+
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-broadcast.json',
+    '/models/response/custom/custom-rest-search-adaptive-broadcast.ts',
+    'CustomRestSearchAdaptiveBroadcast',
+    broadcasts
+  )
+
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-topic.json',
+    '/models/response/custom/custom-rest-search-adaptive-topic.ts',
+    'CustomRestSearchAdaptiveTopic',
+    topics
+  )
+
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-list.json',
+    '/models/response/custom/custom-rest-search-adaptive-list.ts',
+    'CustomRestSearchAdaptiveList',
+    lists
+  )
+
+  await generateTypeInterfaceFromData(
+    '/data/schema/custom/custom-rest-search-adaptive-timeline.json',
+    '/models/response/custom/custom-rest-search-adaptive-timeline.ts',
+    'CustomRestSearchAdaptiveTimeline',
+    timeline
+  )
 }
 
 export async function generateTypeInterfaces() {
@@ -279,7 +371,7 @@ export async function generateTypeInterfaces() {
     await generateCustomUserTweets()
     await generateCustomListTweets()
     await generateCustomTweetDetail()
-    await generateCustomSearchAdaptiveTweet()
+    await generateCustomSearchAdaptive()
   }
 
   if (fs.existsSync('/data/debug/rest/')) {

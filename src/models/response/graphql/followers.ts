@@ -74,8 +74,8 @@ export interface GraphQLFollowersResponse {
                             }
                             url?: {
                               urls: {
-                                display_url: string
-                                expanded_url: string
+                                display_url?: string
+                                expanded_url?: string
                                 url: string
                                 indices: number[]
                               }[]
@@ -140,9 +140,11 @@ export interface GraphQLFollowersResponse {
                           translator_type: string
                           verified: boolean
                           want_retweets: boolean
-                          withheld_in_countries: unknown[]
+                          withheld_in_countries: string[]
                           url?: string
                           verified_type?: string
+                          needs_phone_verification?: boolean
+                          withheld_scope?: string
                         }
                         super_follow_eligible: boolean
                         super_followed_by: boolean

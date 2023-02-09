@@ -1,12 +1,25 @@
 import fs from 'node:fs'
 import { createCompoundSchema } from 'genson-js'
-import { compile } from 'json-schema-to-typescript'
+import { compile, Options } from 'json-schema-to-typescript'
 import { Logger } from '@/lib/logger'
 import { dirname } from 'node:path'
 import { Utils } from './utils'
 import { GraphQLTweetDetailResponse } from '@/models/response/graphql/tweet-detail'
 import { GraphQLUserTweetsResponse } from '@/models/response/graphql/user-tweets'
 import { GraphQLListLatestTweetsTimelineResponse } from '@/models/response/graphql/list-latest-tweets-timeline'
+
+const compileOptions: Partial<Options> = {
+  bannerComment: '',
+  additionalProperties: false,
+  enableConstEnums: true,
+  format: true,
+  strictIndexSignatures: true,
+  style: {
+    semi: false,
+    singleQuote: true,
+  },
+  unknownAny: true,
+}
 
 async function getJSONFiles(directory: string) {
   const files = fs.readdirSync(directory)
@@ -43,11 +56,7 @@ async function generateTypeInterfaceFromData(
   fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
   fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, name, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
+  const ts = await compile(schema, name, compileOptions)
   fs.writeFileSync(interfacePath, ts)
   logger.info(`📝 ${interfacePath}`)
 }
@@ -85,11 +94,7 @@ async function generateTypeInterface(
   fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
   fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `${type}Response`, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
+  const ts = await compile(schema, `${type}Response`, compileOptions)
   fs.writeFileSync(interfacePath, ts)
   logger.info(`📝 ${interfacePath}`)
 }
@@ -126,11 +131,7 @@ async function generateCustomUserTweets() {
   fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
   fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `CustomGraphQLUserTweet`, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
+  const ts = await compile(schema, `CustomGraphQLUserTweet`, compileOptions)
   fs.writeFileSync(interfacePath, ts)
   logger.info(`📝 ${interfacePath}`)
 }
@@ -392,11 +393,7 @@ async function generateCustomFollowingFollower() {
   fs.mkdirSync(dirname(interfacePath), { recursive: true })
 
   fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
-  const ts = await compile(schema, `CustomGraphQLFollowUser`, {
-    bannerComment: '',
-    strictIndexSignatures: true,
-    additionalProperties: false,
-  })
+  const ts = await compile(schema, `CustomGraphQLFollowUser`, compileOptions)
   fs.writeFileSync(interfacePath, ts)
   logger.info(`📝 ${interfacePath}`)
 }
@@ -416,11 +413,13 @@ export async function generateTypeInterfaces() {
       )
     }
 
-    await generateCustomUserTweets()
-    await generateCustomListTweets()
-    await generateCustomTweetDetail()
-    await generateCustomSearchAdaptive()
-    await generateCustomFollowingFollower()
+    promises.push(
+      generateCustomUserTweets(),
+      generateCustomListTweets(),
+      generateCustomTweetDetail(),
+      generateCustomSearchAdaptive(),
+      generateCustomFollowingFollower()
+    )
   }
 
   if (fs.existsSync('/data/debug/rest/')) {

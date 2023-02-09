@@ -10,7 +10,7 @@ export class DebugRouter extends BaseRouter {
   init(): void {
     this.fastify.register(
       (fastify, _, done) => {
-        fastify.get('/', this.routeGetRoot.bind(this))
+        fastify.get('', this.routeGetRoot.bind(this))
         done()
       },
       { prefix: '/debug' }

@@ -37,7 +37,7 @@ export interface CustomRestSearchAdaptiveTweet {
       original_info: {
         width: number
         height: number
-        focus_rects: {
+        focus_rects?: {
           x: number
           y: number
           h: number
@@ -67,7 +67,7 @@ export interface CustomRestSearchAdaptiveTweet {
         }
       }
       features: {
-        small: {
+        small?: {
           faces: {
             x: number
             y: number
@@ -75,7 +75,7 @@ export interface CustomRestSearchAdaptiveTweet {
             w: number
           }[]
         }
-        large: {
+        large?: {
           faces: {
             x: number
             y: number
@@ -83,7 +83,7 @@ export interface CustomRestSearchAdaptiveTweet {
             w: number
           }[]
         }
-        medium: {
+        medium?: {
           faces: {
             x: number
             y: number
@@ -91,7 +91,7 @@ export interface CustomRestSearchAdaptiveTweet {
             w: number
           }[]
         }
-        orig: {
+        orig?: {
           faces: {
             x: number
             y: number
@@ -100,14 +100,18 @@ export interface CustomRestSearchAdaptiveTweet {
           }[]
         }
       }
+      source_status_id?: number
+      source_status_id_str?: string
+      source_user_id?: number
+      source_user_id_str?: string
     }[]
   }
   source: string
-  in_reply_to_status_id: null
-  in_reply_to_status_id_str: null
-  in_reply_to_user_id: null
-  in_reply_to_user_id_str: null
-  in_reply_to_screen_name: null
+  in_reply_to_status_id: null | number
+  in_reply_to_status_id_str: null | string
+  in_reply_to_user_id: null | number
+  in_reply_to_user_id_str: null | string
+  in_reply_to_screen_name: null | string
   user_id: number
   user_id_str: string
   geo: null
@@ -192,7 +196,7 @@ export interface CustomRestSearchAdaptiveTweet {
       original_info: {
         width: number
         height: number
-        focus_rects: {
+        focus_rects?: {
           x: number
           y: number
           h: number
@@ -222,7 +226,7 @@ export interface CustomRestSearchAdaptiveTweet {
         }
       }
       features: {
-        small: {
+        small?: {
           faces: {
             x: number
             y: number
@@ -230,7 +234,7 @@ export interface CustomRestSearchAdaptiveTweet {
             w: number
           }[]
         }
-        large: {
+        large?: {
           faces: {
             x: number
             y: number
@@ -238,7 +242,7 @@ export interface CustomRestSearchAdaptiveTweet {
             w: number
           }[]
         }
-        medium: {
+        medium?: {
           faces: {
             x: number
             y: number
@@ -246,7 +250,7 @@ export interface CustomRestSearchAdaptiveTweet {
             w: number
           }[]
         }
-        orig: {
+        orig?: {
           faces: {
             x: number
             y: number
@@ -273,8 +277,178 @@ export interface CustomRestSearchAdaptiveTweet {
       }
       ext: {
         mediaStats: {
-          r: string
+          r:
+            | string
+            | {
+                ok: {
+                  viewCount: string
+                }
+              }
           ttl: number
+        }
+      }
+      source_status_id?: number
+      source_status_id_str?: string
+      source_user_id?: number
+      source_user_id_str?: string
+      video_info?: {
+        aspect_ratio: number[]
+        duration_millis: number
+        variants: {
+          bitrate?: number
+          content_type: string
+          url: string
+        }[]
+      }
+      additional_media_info?: {
+        title: string
+        description: string
+        monetizable: boolean
+        source_user: {
+          id: number
+          id_str: string
+          name: string
+          screen_name: string
+          location: string
+          description: string
+          url: string
+          entities: {
+            url: {
+              urls: {
+                url: string
+                expanded_url: string
+                display_url: string
+                indices: number[]
+              }[]
+            }
+            description: {
+              urls: unknown[]
+            }
+          }
+          protected: boolean
+          followers_count: number
+          fast_followers_count: number
+          normal_followers_count: number
+          friends_count: number
+          listed_count: number
+          created_at: string
+          favourites_count: number
+          utc_offset: null
+          time_zone: null
+          geo_enabled: boolean
+          verified: boolean
+          statuses_count: number
+          media_count: number
+          lang: null
+          contributors_enabled: boolean
+          is_translator: boolean
+          is_translation_enabled: boolean
+          profile_background_color: string
+          profile_background_image_url: string
+          profile_background_image_url_https: string
+          profile_background_tile: boolean
+          profile_image_url: string
+          profile_image_url_https: string
+          profile_banner_url: string
+          profile_image_extensions_sensitive_media_warning: null
+          profile_image_extensions_media_availability: null
+          profile_image_extensions_alt_text: null
+          profile_image_extensions_media_color: {
+            palette: {
+              rgb: {
+                red: number
+                green: number
+                blue: number
+              }
+              percentage: number
+            }[]
+          }
+          profile_image_extensions: {
+            mediaStats: {
+              r: {
+                missing: null
+              }
+              ttl: number
+            }
+          }
+          profile_banner_extensions_sensitive_media_warning: null
+          profile_banner_extensions_media_availability: null
+          profile_banner_extensions_alt_text: null
+          profile_banner_extensions_media_color: {
+            palette: {
+              rgb: {
+                red: number
+                green: number
+                blue: number
+              }
+              percentage: number
+            }[]
+          }
+          profile_banner_extensions: {
+            mediaStats: {
+              r: {
+                missing: null
+              }
+              ttl: number
+            }
+          }
+          profile_link_color: string
+          profile_sidebar_border_color: string
+          profile_sidebar_fill_color: string
+          profile_text_color: string
+          profile_use_background_image: boolean
+          has_extended_profile: boolean
+          default_profile: boolean
+          default_profile_image: boolean
+          pinned_tweet_ids: number[]
+          pinned_tweet_ids_str: string[]
+          has_custom_timelines: boolean
+          can_dm: boolean
+          can_media_tag: boolean
+          following: boolean
+          follow_request_sent: boolean
+          notifications: boolean
+          muting: boolean
+          blocking: boolean
+          blocked_by: boolean
+          want_retweets: boolean
+          advertiser_account_type: string
+          advertiser_account_service_levels: string[]
+          profile_interstitial_type: string
+          business_profile_state: string
+          translator_type: string
+          withheld_in_countries: unknown[]
+          followed_by: boolean
+          ext_verified_type: string
+          ext_has_nft_avatar: boolean
+          ext_is_blue_verified: boolean
+          ext: {
+            highlightedLabel: {
+              r: {
+                ok: {}
+              }
+              ttl: number
+            }
+            hasNftAvatar: {
+              r: {
+                ok: boolean
+              }
+              ttl: number
+            }
+            superFollowMetadata: {
+              r: {
+                ok: {
+                  superFollowEligible: boolean
+                  superFollowing: boolean
+                  superFollowedBy: boolean
+                  exclusiveTweetFollowing: boolean
+                  privateSuperFollowing: boolean
+                }
+              }
+              ttl: number
+            }
+          }
+          require_some_consent: boolean
         }
       }
     }[]
@@ -849,4 +1023,15 @@ export interface CustomRestSearchAdaptiveTweet {
   limited_actions?: string
   retweeted_status_id?: number
   retweeted_status_id_str?: string
+  self_thread?: {
+    id: number
+    id_str: string
+  }
+  quoted_status_id?: number
+  quoted_status_id_str?: string
+  quoted_status_permalink?: {
+    url: string
+    expanded: string
+    display: string
+  }
 }

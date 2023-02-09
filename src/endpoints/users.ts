@@ -19,69 +19,51 @@ export class UsersRouter extends BaseRouter {
   init(): void {
     this.fastify.register(
       (fastify, _, done) => {
-        fastify.get('/get', this.routeGetUserWithUserId.bind(this))
-        fastify.get('/:screenName', this.routeGetUser.bind(this))
-        fastify.get('/:screenName/tweets', this.routeGetUserTweets.bind(this))
+        fastify.get('', this.routeGetUser.bind(this))
+        fastify.get('/tweets', this.routeGetUserTweets.bind(this))
         fastify.get(
-          '/:screenName/with_replies',
+          '/with_replies',
           this.routeGetUserTweetWithReplies.bind(this)
         )
-        fastify.get('/:screenName/likes', this.routeGetUserLikes.bind(this))
+        fastify.get('/likes', this.routeGetUserLikes.bind(this))
         done()
       },
       { prefix: '/users' }
     )
   }
 
-  async routeGetUserWithUserId(
-    request: FastifyRequest<{ Querystring: { user_id: string } }>,
+  async routeGetUser(
+    request: FastifyRequest<{
+      Querystring: {
+        screen_name?: string
+        user_id?: string
+      }
+    }>,
     reply: FastifyReply
   ): Promise<void> {
+    const screenName = request.query.screen_name
     const userId = request.query.user_id
-    if (!userId) {
-      throw new Error('Should provide query:user_id')
+
+    if (!screenName && !userId) {
+      throw new Error('Should provide query:screenName or query:userId')
     }
+    if (screenName && userId) {
+      throw new Error(
+        'Should provide only one of query:screenName or query:userId'
+      )
+    }
+
+    const url = screenName
+      ? `https://twitter.com/${screenName}`
+      : `https://twitter.com/i/user/${userId}`
 
     const page = await this.wrapper.newPage()
 
     const graphqlResponse = new GraphQLResponse(page, 'UserByScreenName')
-    const url = `https://twitter.com/i/user/${userId}`
     await page.goto(url)
     const response = await graphqlResponse.getSingleResponse(5000)
 
     await page.close()
-    if (!response) {
-      throw new Error('Failed to get user response')
-    }
-
-    if (!response.data.user) {
-      throw new Error('Failed to get user data (404?)')
-    }
-
-    const result: GetUserWithUserIdResponse = {
-      id: Number(userId),
-      id_str: userId,
-      ...Utils.omit(response.data.user.result.legacy, [
-        'following',
-        'followed_by',
-      ]),
-    }
-
-    Utils.send<GetUserWithUserIdResponse>(reply, result)
-  }
-
-  async routeGetUser(
-    request: FastifyRequest<{ Params: { screenName: string } }>,
-    reply: FastifyReply
-  ): Promise<void> {
-    const screenName = request.params.screenName
-    const page = await this.wrapper.newPage()
-
-    const graphqlResponse = new GraphQLResponse(page, 'UserByScreenName')
-    await page.goto(`https://twitter.com/${screenName}`)
-    const response = await graphqlResponse.getSingleResponse(5000)
-
-    await page.close()
 
     if (!response) {
       throw new Error('Failed to get user response')
@@ -91,10 +73,10 @@ export class UsersRouter extends BaseRouter {
       throw new Error('Failed to get user data (404?)')
     }
 
-    const userId = response.data.user.result.rest_id
+    const resultUserId = response.data.user.result.rest_id
     const result: GetUserWithUserIdResponse = {
-      id: Number(userId),
-      id_str: userId,
+      id: Number(resultUserId),
+      id_str: resultUserId,
       ...response.data.user.result.legacy,
     }
 
@@ -103,20 +85,35 @@ export class UsersRouter extends BaseRouter {
 
   async routeGetUserTweets(
     request: FastifyRequest<{
-      Params: { screenName: string }
       Querystring: {
+        screen_name?: string
+        user_id?: string
         limit: number
       }
     }>,
     reply: FastifyReply
   ): Promise<void> {
-    const screenName = request.params.screenName
+    const screenName = request.query.screen_name
+    const userId = request.query.user_id
     const limit = request.query.limit || 20
+
+    if (!screenName && !userId) {
+      throw new Error('Should provide query:screenName or query:userId')
+    }
+    if (screenName && userId) {
+      throw new Error(
+        'Should provide only one of query:screenName or query:userId'
+      )
+    }
+
+    const url = screenName
+      ? `https://twitter.com/${screenName}`
+      : `https://twitter.com/i/user/${userId}`
 
     const page = await this.wrapper.newPage()
 
     const graphqlResponse = new GraphQLResponse(page, 'UserTweets')
-    await page.goto(`https://twitter.com/${screenName}`, {
+    await page.goto(url, {
       waitUntil: 'networkidle2',
     })
 
@@ -142,15 +139,35 @@ export class UsersRouter extends BaseRouter {
 
   async routeGetUserTweetWithReplies(
     request: FastifyRequest<{
-      Params: { screenName: string }
       Querystring: {
+        screen_name?: string
+        user_id?: string
         limit: number
       }
     }>,
     reply: FastifyReply
   ): Promise<void> {
-    const screenName = request.params.screenName
+    let screenName = request.query.screen_name
+    const userId = request.query.user_id
     const limit = request.query.limit || 20
+
+    if (!screenName && !userId) {
+      throw new Error('Should provide query:screenName or query:userId')
+    }
+    if (screenName && userId) {
+      throw new Error(
+        'Should provide only one of query:screenName or query:userId'
+      )
+    }
+
+    // スクリーンネームを取得する
+    if (!screenName && userId) {
+      screenName = await this.getScreenName(userId)
+    }
+
+    if (!screenName) {
+      throw new Error('Failed to get screen name')
+    }
 
     const page = await this.wrapper.newPage()
 
@@ -181,15 +198,35 @@ export class UsersRouter extends BaseRouter {
 
   async routeGetUserLikes(
     request: FastifyRequest<{
-      Params: { screenName: string }
       Querystring: {
+        screen_name?: string
+        user_id?: string
         limit: number
       }
     }>,
     reply: FastifyReply
   ): Promise<void> {
-    const screenName = request.params.screenName
+    let screenName = request.query.screen_name
+    const userId = request.query.user_id
     const limit = request.query.limit || 20
+
+    if (!screenName && !userId) {
+      throw new Error('Should provide query:screenName or query:userId')
+    }
+    if (screenName && userId) {
+      throw new Error(
+        'Should provide only one of query:screenName or query:userId'
+      )
+    }
+
+    // スクリーンネームを取得する
+    if (!screenName && userId) {
+      screenName = await this.getScreenName(userId)
+    }
+
+    if (!screenName) {
+      throw new Error('Failed to get screen name')
+    }
 
     const page = await this.wrapper.newPage()
 
@@ -216,6 +253,30 @@ export class UsersRouter extends BaseRouter {
     await page.close()
 
     Utils.send<GetUserLikesResponse>(reply, tweets)
+  }
+
+  async getScreenName(userId: string): Promise<string> {
+    const url = `https://twitter.com/i/user/${userId}`
+    const page = await this.wrapper.newPage()
+    await page.goto(url, {
+      waitUntil: 'networkidle2',
+    })
+
+    const graphqlResponse = new GraphQLResponse(page, 'UserByScreenName')
+    await page.goto(url)
+    const response = await graphqlResponse.getSingleResponse(5000)
+
+    await page.close()
+
+    if (!response) {
+      throw new Error('Failed to get user response')
+    }
+
+    if (!response.data.user) {
+      throw new Error('Failed to get user data (404?)')
+    }
+
+    return response.data.user.result.legacy.screen_name
   }
 
   waitTweet(graphqlResponse: GraphQLResponse<'UserTweets'>): Promise<Status[]> {

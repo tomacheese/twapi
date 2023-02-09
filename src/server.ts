@@ -71,11 +71,11 @@ export async function buildApp(): Promise<FastifyInstance> {
     app.addHook('onRequest', app.basicAuth)
   })
 
+  // Swagger
   const versionFile = fs.existsSync('/app/version')
     ? fs.readFileSync('/app/version', 'utf8').trim()
     : undefined
   const version = process.env.npm_package_version || versionFile || '0.0.0'
-
   app.register(swagger, {
     swagger: {
       info: {
@@ -83,12 +83,22 @@ export async function buildApp(): Promise<FastifyInstance> {
         description: 'Twitter Unofficial API',
         version,
       },
+      securityDefinitions: {
+        basicAuth: {
+          type: 'basic',
+        },
+      },
     },
   })
-
   app.register(swaggerUI, {
     routePrefix: '/docs',
     staticCSP: true,
+  })
+  app.register((fastify, _, done) => {
+    fastify.get('/', (_, reply) => {
+      reply.redirect('/docs')
+    })
+    done()
   })
 
   // routers
@@ -97,8 +107,11 @@ export async function buildApp(): Promise<FastifyInstance> {
     new TweetsRouter(app, config, wrapper),
     new ListsRouter(app, config, wrapper),
     new SearchRouter(app, config, wrapper),
-    new DebugRouter(app, config, wrapper),
   ]
+
+  if (process.env.NODE_ENV === 'development') {
+    routers.push(new DebugRouter(app, config, wrapper))
+  }
 
   for (const router of routers) {
     logger.info(`🚦 Initializing route: ${router.constructor.name}`)

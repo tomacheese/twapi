@@ -363,6 +363,35 @@ async function generateCustomFollowingFollower() {
   const files = [...fileFollowings, ...fileFollowers]
   const data = files
     .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d: any) => d.data.user.result.timeline.timeline.instructions)
+
+  if (data.length === 0) {
+    logger.warn(`❌ Not found json files`)
+    return
+  }
+
+  const schema = createCompoundSchema(data)
+
+  const schemaPath = `/data/schema/custom/custom-graphql-follow.json`
+  fs.mkdirSync(dirname(schemaPath), { recursive: true })
+  const interfacePath = `/models/response/custom/custom-graphql-follow.ts`
+  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+
+  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
+  const ts = await compile(schema, `CustomGraphQLFollow`, compileOptions)
+  fs.writeFileSync(interfacePath, ts)
+  logger.info(`📝 ${interfacePath}`)
+}
+
+async function generateCustomFollowingFollowerUser() {
+  const logger = Logger.configure('generateCustomFollowingFollower')
+  logger.info(`✨ generateCustomFollowingFollower()`)
+
+  const fileFollowings = await getJSONFiles('/data/debug/graphql/Following')
+  const fileFollowers = await getJSONFiles('/data/debug/graphql/Following')
+  const files = [...fileFollowings, ...fileFollowers]
+  const data = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
     .flatMap((d: any) =>
       Utils.filterUndefined(
         Utils.filterUndefined(
@@ -418,7 +447,8 @@ export async function generateTypeInterfaces() {
       generateCustomListTweets(),
       generateCustomTweetDetail(),
       generateCustomSearchAdaptive(),
-      generateCustomFollowingFollower()
+      generateCustomFollowingFollower(),
+      generateCustomFollowingFollowerUser()
     )
   }
 

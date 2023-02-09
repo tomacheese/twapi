@@ -9,8 +9,10 @@ import {
   GetUserTweetsResponse,
   GetUserWithUserIdResponse,
 } from '@/models/endpoints/users'
+import { CustomGraphQLFollow } from '@/models/response/custom/custom-graphql-follow'
 import { CustomGraphQLFollowUser } from '@/models/response/custom/custom-graphql-follow-user'
 import { CustomGraphQLUserTweet } from '@/models/response/custom/custom-graphql-user-tweet'
+import { GraphQLFollowersResponse } from '@/models/response/graphql/followers'
 import { GraphQLFollowingResponse } from '@/models/response/graphql/following'
 import { GraphQLLikesResponse } from '@/models/response/graphql/likes'
 import { GraphQLUserTweetsResponse } from '@/models/response/graphql/user-tweets'
@@ -504,8 +506,11 @@ export class UsersRouter extends BaseRouter {
     })
   }
 
-  getFollowUser(response: GraphQLFollowingResponse): User[] {
-    const result = response.data.user.result.timeline.timeline.instructions
+  getFollowUser(
+    response: GraphQLFollowingResponse | GraphQLFollowersResponse
+  ): User[] {
+    const result = response.data.user.result.timeline.timeline
+      .instructions as CustomGraphQLFollow[]
     return (
       Utils.filterUndefined(
         Utils.filterUndefined(

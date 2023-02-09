@@ -22,7 +22,40 @@ export interface GraphQLFollowingResponse {
                         __typename: string
                         id?: string
                         rest_id?: string
-                        affiliates_highlighted_label?: {}
+                        affiliates_highlighted_label?: {
+                          label?: {
+                            url?: {
+                              url: string
+                              urlType: string
+                            }
+                            badge: {
+                              url: string
+                            }
+                            description: string
+                            userLabelType: string
+                            userLabelDisplayType?: string
+                            longDescription?: {
+                              text: string
+                              entities: {
+                                fromIndex: number
+                                toIndex: number
+                                ref: {
+                                  type: string
+                                  screen_name: string
+                                  mention_results: {
+                                    result: {
+                                      __typename: string
+                                      legacy: {
+                                        screen_name: string
+                                      }
+                                      rest_id: string
+                                    }
+                                  }
+                                }
+                              }[]
+                            }
+                          }
+                        }
                         has_graduated_access?: boolean
                         has_nft_avatar?: boolean
                         is_blue_verified?: boolean
@@ -129,6 +162,7 @@ export interface GraphQLFollowingResponse {
                             icon_name: string
                           }[]
                         }
+                        business_account?: {}
                       }
                     }
                     userDisplayType: string

@@ -3,15 +3,19 @@ import { GraphQLResponse } from '@/lib/graphql-response'
 import { Logger } from '@/lib/logger'
 import { Utils } from '@/lib/utils'
 import {
+  GetUserFollowersResponse,
+  GetUserFollowingResponse,
   GetUserLikesResponse,
   GetUserTweetsResponse,
   GetUserWithUserIdResponse,
 } from '@/models/endpoints/users'
+import { CustomGraphQLFollowUser } from '@/models/response/custom/custom-graphql-follow-user'
 import { CustomGraphQLUserTweet } from '@/models/response/custom/custom-graphql-user-tweet'
+import { GraphQLFollowingResponse } from '@/models/response/graphql/following'
 import { GraphQLLikesResponse } from '@/models/response/graphql/likes'
 import { GraphQLUserTweetsResponse } from '@/models/response/graphql/user-tweets'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { Status } from 'twitter-d'
+import { Status, User } from 'twitter-d'
 
 export class UsersRouter extends BaseRouter {
   private logger = Logger.configure('UsersRouter')
@@ -26,6 +30,8 @@ export class UsersRouter extends BaseRouter {
           this.routeGetUserTweetWithReplies.bind(this)
         )
         fastify.get('/likes', this.routeGetUserLikes.bind(this))
+        fastify.get('/following', this.routeGetUserFollowing.bind(this))
+        fastify.get('/followers', this.routeGetUserFollowers.bind(this))
         done()
       },
       { prefix: '/users' }
@@ -78,6 +84,13 @@ export class UsersRouter extends BaseRouter {
       id: Number(resultUserId),
       id_str: resultUserId,
       ...response.data.user.result.legacy,
+      // @ts-ignore
+      following: undefined,
+      followed_by: undefined,
+      follow_request_sent: undefined,
+      muting: undefined,
+      blocking: undefined,
+      blocked_by: undefined,
     }
 
     Utils.send<GetUserWithUserIdResponse>(reply, result)
@@ -255,6 +268,122 @@ export class UsersRouter extends BaseRouter {
     Utils.send<GetUserLikesResponse>(reply, tweets)
   }
 
+  async routeGetUserFollowing(
+    request: FastifyRequest<{
+      Querystring: {
+        screen_name?: string
+        user_id?: string
+        limit: number
+      }
+    }>,
+    reply: FastifyReply
+  ): Promise<void> {
+    let screenName = request.query.screen_name
+    const userId = request.query.user_id
+
+    if (!screenName && !userId) {
+      throw new Error('Should provide query:screenName or query:userId')
+    }
+    if (screenName && userId) {
+      throw new Error(
+        'Should provide only one of query:screenName or query:userId'
+      )
+    }
+
+    // スクリーンネームを取得する
+    if (!screenName && userId) {
+      screenName = await this.getScreenName(userId)
+    }
+
+    if (!screenName) {
+      throw new Error('Failed to get screen name')
+    }
+
+    const page = await this.wrapper.newPage()
+
+    const graphqlResponse = new GraphQLResponse(page, 'Following')
+    await page.goto(`https://twitter.com/${screenName}/following`, {
+      waitUntil: 'networkidle2',
+    })
+
+    const scrollInterval = setInterval(async () => {
+      await Utils.pageScroll(page)
+    }, 1000)
+
+    const users = []
+    while (true) {
+      try {
+        users.push(...(await this.waitFollowing(graphqlResponse)))
+      } catch (error) {
+        this.logger.error('⚠️ Failed wait following', error as Error)
+        break
+      }
+    }
+
+    clearInterval(scrollInterval)
+    await page.close()
+
+    Utils.send<GetUserFollowingResponse>(reply, users)
+  }
+
+  async routeGetUserFollowers(
+    request: FastifyRequest<{
+      Querystring: {
+        screen_name?: string
+        user_id?: string
+        limit: number
+      }
+    }>,
+    reply: FastifyReply
+  ): Promise<void> {
+    let screenName = request.query.screen_name
+    const userId = request.query.user_id
+
+    if (!screenName && !userId) {
+      throw new Error('Should provide query:screenName or query:userId')
+    }
+    if (screenName && userId) {
+      throw new Error(
+        'Should provide only one of query:screenName or query:userId'
+      )
+    }
+
+    // スクリーンネームを取得する
+    if (!screenName && userId) {
+      screenName = await this.getScreenName(userId)
+    }
+
+    if (!screenName) {
+      throw new Error('Failed to get screen name')
+    }
+
+    const page = await this.wrapper.newPage()
+
+    const graphqlResponse = new GraphQLResponse(page, 'Followers')
+    await page.goto(`https://twitter.com/${screenName}/followers`, {
+      waitUntil: 'networkidle2',
+    })
+
+    const scrollInterval = setInterval(async () => {
+      await Utils.pageScroll(page)
+    }, 1000)
+
+    const users = []
+    while (true) {
+      try {
+        users.push(...(await this.waitFollowing(graphqlResponse)))
+      } catch (error) {
+        this.logger.error('⚠️ Failed wait following', error as Error)
+        break
+      }
+    }
+
+    clearInterval(scrollInterval)
+    await page.close()
+
+    Utils.send<GetUserFollowersResponse>(reply, users)
+  }
+
   async getScreenName(userId: string): Promise<string> {
     const url = `https://twitter.com/i/user/${userId}`
     const page = await this.wrapper.newPage()
@@ -319,6 +448,28 @@ export class UsersRouter extends BaseRouter {
     })
   }
 
+  waitFollowing(
+    graphqlResponse: GraphQLResponse<'Following' | 'Followers'>
+  ): Promise<User[]> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error('TIMEOUT'))
+      }, 10_000)
+      const interval = setInterval(async () => {
+        const response = graphqlResponse.shiftResponse()
+        if (!response) {
+          return
+        }
+
+        const users = this.getFollowUser(response)
+        if (users.length > 0) {
+          clearInterval(interval)
+          resolve(users)
+        }
+      }, 1000)
+    })
+  }
+
   getTweet(response: GraphQLUserTweetsResponse): Status[] {
     const result = response.data.user.result.timeline_v2.timeline.instructions
     return (
@@ -353,6 +504,23 @@ export class UsersRouter extends BaseRouter {
     })
   }
 
+  getFollowUser(response: GraphQLFollowingResponse): User[] {
+    const result = response.data.user.result.timeline.timeline.instructions
+    return (
+      Utils.filterUndefined(
+        Utils.filterUndefined(
+          result
+            .filter((instruction) => instruction.type === 'TimelineAddEntries')
+            .flatMap((instruction) => instruction.entries)
+        )
+          .filter((entry) => entry.entryId.startsWith('user-'))
+          .flatMap((entry) => entry.content.itemContent?.user_results.result)
+      ) as CustomGraphQLFollowUser[]
+    ).map((user) => {
+      return this.createUserObject(user)
+    })
+  }
+
   createStatusObject(tweet: CustomGraphQLUserTweet): Status {
     const legacy = tweet.legacy ?? tweet.tweet?.legacy ?? undefined
     if (!legacy) {
@@ -373,6 +541,24 @@ export class UsersRouter extends BaseRouter {
         : undefined,
       // @ts-ignore
       entities: legacy.entities,
+    }
+  }
+
+  createUserObject(user: CustomGraphQLFollowUser): User {
+    if (user.id === undefined) {
+      throw new Error('Failed to get user id')
+    }
+    return {
+      id: Number(user.id),
+      id_str: user.id,
+      ...user.legacy,
+      // @ts-ignore
+      following: undefined,
+      followed_by: undefined,
+      follow_request_sent: undefined,
+      muting: undefined,
+      blocking: undefined,
+      blocked_by: undefined,
     }
   }
 }

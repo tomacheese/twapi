@@ -132,6 +132,7 @@ export interface GraphQLLikesResponse {
                                   icon_name: string
                                 }[]
                               }
+                              business_account?: {}
                             }
                           }
                         }

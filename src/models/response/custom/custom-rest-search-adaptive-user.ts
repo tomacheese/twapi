@@ -52,7 +52,7 @@ export interface CustomRestSearchAdaptiveUser {
   profile_image_extensions_sensitive_media_warning?: null
   profile_image_extensions_media_availability?: null
   profile_image_extensions_alt_text?: null
-  profile_image_extensions_media_color?: {
+  profile_image_extensions_media_color?: null | {
     palette: {
       rgb: {
         red: number
@@ -73,7 +73,7 @@ export interface CustomRestSearchAdaptiveUser {
   profile_banner_extensions_sensitive_media_warning?: null
   profile_banner_extensions_media_availability?: null
   profile_banner_extensions_alt_text?: null
-  profile_banner_extensions_media_color?: {
+  profile_banner_extensions_media_color?: null | {
     palette: {
       rgb: {
         red: number

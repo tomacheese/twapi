@@ -100,7 +100,16 @@ export class SearchRouter extends BaseRouter {
     }
     return {
       ...tweet,
-      user,
+      user: {
+        ...user,
+        // @ts-ignore
+        following: undefined,
+        followed_by: undefined,
+        follow_request_sent: undefined,
+        muting: undefined,
+        blocking: undefined,
+        blocked_by: undefined,
+      },
       // @ts-ignore
       contributors: tweet.contributors,
       display_text_range: tweet.display_text_range

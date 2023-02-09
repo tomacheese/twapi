@@ -353,6 +353,54 @@ async function generateCustomSearchAdaptive() {
   )
 }
 
+async function generateCustomFollowingFollower() {
+  const logger = Logger.configure('generateCustomFollowingFollower')
+  logger.info(`✨ generateCustomFollowingFollower()`)
+
+  const fileFollowings = await getJSONFiles('/data/debug/graphql/Following')
+  const fileFollowers = await getJSONFiles('/data/debug/graphql/Following')
+  const files = [...fileFollowings, ...fileFollowers]
+  const data = files
+    .map((f) => JSON.parse(fs.readFileSync(f, 'utf8')))
+    .flatMap((d: any) =>
+      Utils.filterUndefined(
+        Utils.filterUndefined(
+          d.data.user.result.timeline.timeline.instructions
+            .filter(
+              (instruction: { type: string }) =>
+                instruction.type === 'TimelineAddEntries'
+            )
+            .flatMap((instruction: any) => instruction.entries)
+        )
+          .filter((entry: any) => entry.entryId.startsWith('user-'))
+          .flatMap(
+            (entry: any) => entry.content.itemContent?.user_results.result
+          )
+      )
+    )
+
+  if (data.length === 0) {
+    logger.warn(`❌ Not found json files`)
+    return
+  }
+
+  const schema = createCompoundSchema(data)
+
+  const schemaPath = `/data/schema/custom/custom-graphql-follow-user.json`
+  fs.mkdirSync(dirname(schemaPath), { recursive: true })
+  const interfacePath = `/models/response/custom/custom-graphql-follow-user.ts`
+  fs.mkdirSync(dirname(interfacePath), { recursive: true })
+
+  fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2))
+  const ts = await compile(schema, `CustomGraphQLFollowUser`, {
+    bannerComment: '',
+    strictIndexSignatures: true,
+    additionalProperties: false,
+  })
+  fs.writeFileSync(interfacePath, ts)
+  logger.info(`📝 ${interfacePath}`)
+}
+
 export async function generateTypeInterfaces() {
   const promises = []
 
@@ -372,6 +420,7 @@ export async function generateTypeInterfaces() {
     await generateCustomListTweets()
     await generateCustomTweetDetail()
     await generateCustomSearchAdaptive()
+    await generateCustomFollowingFollower()
   }
 
   if (fs.existsSync('/data/debug/rest/')) {

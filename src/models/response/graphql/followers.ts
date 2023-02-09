@@ -22,7 +22,35 @@ export interface GraphQLFollowersResponse {
                         __typename: string
                         id: string
                         rest_id: string
-                        affiliates_highlighted_label: {}
+                        affiliates_highlighted_label: {
+                          label?: {
+                            badge: {
+                              url: string
+                            }
+                            description: string
+                            longDescription: {
+                              text: string
+                              entities: {
+                                fromIndex: number
+                                toIndex: number
+                                ref: {
+                                  type: string
+                                  screen_name: string
+                                  mention_results: {
+                                    result: {
+                                      __typename: string
+                                      legacy: {
+                                        screen_name: string
+                                      }
+                                      rest_id: string
+                                    }
+                                  }
+                                }
+                              }[]
+                            }
+                            userLabelType: string
+                          }
+                        }
                         has_graduated_access: boolean
                         has_nft_avatar: boolean
                         is_blue_verified: boolean
@@ -114,6 +142,7 @@ export interface GraphQLFollowersResponse {
                           want_retweets: boolean
                           withheld_in_countries: unknown[]
                           url?: string
+                          verified_type?: string
                         }
                         super_follow_eligible: boolean
                         super_followed_by: boolean
@@ -127,6 +156,7 @@ export interface GraphQLFollowersResponse {
                             icon_name: string
                           }[]
                         }
+                        business_account?: {}
                       }
                     }
                     userDisplayType: string

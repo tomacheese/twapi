@@ -550,12 +550,12 @@ export class UsersRouter extends BaseRouter {
   }
 
   createUserObject(user: CustomGraphQLFollowUser): User {
-    if (user.id === undefined) {
+    if (user.rest_id === undefined) {
       throw new Error('Failed to get user id')
     }
     return {
-      id: Number(user.id),
-      id_str: user.id,
+      id: Number(user.rest_id),
+      id_str: user.rest_id,
       ...user.legacy,
       // @ts-ignore
       following: undefined,

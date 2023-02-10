@@ -111,8 +111,8 @@ export class ListsRouter extends BaseRouter {
       source: tweet.source ?? 'NULL',
       truncated: false,
       user: {
-        id: Number(tweet.core?.user_results.result.id),
-        id_str: tweet.core?.user_results.result.id ?? 'NULL',
+        id: Number(tweet.core?.user_results.result.rest_id),
+        id_str: tweet.core?.user_results.result.rest_id ?? 'NULL',
         ...tweet.core?.user_results.result.legacy,
       },
       ...legacy,

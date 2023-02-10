@@ -1,6 +1,7 @@
 import { BaseRouter } from '@/lib/base-router'
 import { GraphQLResponse } from '@/lib/graphql-response'
 import { Logger } from '@/lib/logger'
+import { getWrapper } from '@/lib/puppeteer-wrapper.class'
 import { Utils } from '@/lib/utils'
 import { GetListTweetsResponse } from '@/models/endpoints/lists'
 import { CustomGraphQLListTweet } from '@/models/response/custom/custom-graphql-list-tweets'
@@ -33,7 +34,22 @@ export class ListsRouter extends BaseRouter {
     const listId = request.params.list_id
     const limit = request.query.limit || 20
 
-    const page = await this.wrapper.newPage()
+    const account = request.account
+    if (!account) {
+      reply.code(401).send({
+        message: 'Unauthorized',
+      })
+      return
+    }
+    const wrapper = await getWrapper({
+      headless: true,
+      user: account.username,
+      auth: {
+        password: account.password,
+        authCodeSecret: account.authCodeSecret,
+      },
+    })
+    const page = await wrapper.newPage()
 
     const graphqlResponse = new GraphQLResponse(
       page,

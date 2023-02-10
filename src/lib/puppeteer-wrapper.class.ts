@@ -25,7 +25,7 @@ export interface PuppeteerWrapperOptions {
 export class PuppeteerWrapper {
   private static logger = Logger.configure('PuppeteerWrapper')
   private browser: Browser
-  private proxy: ProxyOptions | undefined
+  private options: PuppeteerWrapperOptions
   private xvfbProcess: ChildProcess | undefined
   private closed = false
   public readonly screen: number
@@ -33,26 +33,39 @@ export class PuppeteerWrapper {
 
   private constructor(
     browser: Browser,
-    proxy: ProxyOptions | undefined,
+    options: PuppeteerWrapperOptions,
     screen: number,
     xvfbProcess: ChildProcess | undefined
   ) {
     this.browser = browser
-    this.proxy = proxy
+    this.options = options
     this.screen = screen
     this.xvfbProcess = xvfbProcess
+
+    this.browser.on('disconnected', () => {
+      if (this.closed) {
+        return
+      }
+      PuppeteerWrapper.logger.info('🔌 Browser disconnected. Reconnecting...')
+      PuppeteerWrapper.getBrowser(
+        `/data/userdata/${options.user}`,
+        options
+      ).then((browser) => {
+        this.browser = browser
+      })
+    })
   }
 
   public async newPage() {
-    return PuppeteerWrapper.newPage(this.browser, this.proxy)
+    return PuppeteerWrapper.newPage(this.browser, this.options.proxy)
   }
 
   public async close() {
+    this.closed = true
     await this.browser.close()
     if (this.xvfbProcess) {
       this.xvfbProcess.kill()
     }
-    this.closed = true
   }
 
   public isClosed() {
@@ -86,9 +99,6 @@ export class PuppeteerWrapper {
 
   public static async init(screen: number, options: PuppeteerWrapperOptions) {
     const userDataDirectory = `/data/userdata/${options.user}`
-    if (!fs.existsSync(userDataDirectory)) {
-      fs.mkdirSync(userDataDirectory, { recursive: true })
-    }
 
     const puppeteerArguments = [
       '--no-sandbox',
@@ -136,6 +146,38 @@ export class PuppeteerWrapper {
     const display = `:${screen}`
     process.env.DISPLAY = display
 
+    const browser = await PuppeteerWrapper.getBrowser(
+      userDataDirectory,
+      options
+    )
+
+    return new PuppeteerWrapper(browser, options, screen, xvfbProcess)
+  }
+
+  private static async getBrowser(
+    userDataDirectory: string,
+    options: PuppeteerWrapperOptions
+  ) {
+    if (!fs.existsSync(userDataDirectory)) {
+      fs.mkdirSync(userDataDirectory, { recursive: true })
+    }
+
+    const puppeteerArguments = [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--disable-gpu',
+      '--lang=ja',
+      '--window-size=600,800',
+    ]
+
+    if (options.proxy && options.proxy.server) {
+      puppeteerArguments.push('--proxy-server=' + options.proxy.server)
+    }
+
     const browser = await puppeteer.launch({
       headless: options.headless,
       executablePath: '/usr/bin/chromium-browser',
@@ -156,7 +198,7 @@ export class PuppeteerWrapper {
     await this.login(loginPage, options)
     await loginPage.close()
 
-    return new PuppeteerWrapper(browser, options.proxy, screen, xvfbProcess)
+    return browser
   }
 
   private static async login(

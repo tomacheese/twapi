@@ -46,7 +46,9 @@ export class PuppeteerWrapper {
       if (this.closed) {
         return
       }
-      PuppeteerWrapper.logger.info('🔌 Browser disconnected. Reconnecting...')
+      PuppeteerWrapper.logger.info(
+        '🔌 Browser disconnected (disconnect event). Reconnecting...'
+      )
       PuppeteerWrapper.getBrowser(
         `/data/userdata/${options.user}`,
         options
@@ -54,6 +56,23 @@ export class PuppeteerWrapper {
         this.browser = browser
       })
     })
+    setInterval(() => {
+      const isConnected = this.browser.isConnected()
+
+      if (isConnected) {
+        return
+      }
+
+      PuppeteerWrapper.logger.info(
+        '🔌 Browser disconnected (check connected). Reconnecting...'
+      )
+      PuppeteerWrapper.getBrowser(
+        `/data/userdata/${options.user}`,
+        options
+      ).then((browser) => {
+        this.browser = browser
+      })
+    }, 10_000)
   }
 
   public async newPage() {

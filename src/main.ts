@@ -6,9 +6,12 @@ async function main() {
   const logger = Logger.configure('main')
 
   logger.info('✨ Starting generate type interface')
-  generateTypeInterfaces().then(() => {
+  const genPromise = generateTypeInterfaces().then(() => {
     logger.info('✅ Finished generate type interface')
   })
+  if (process.env.WAIT_FOR_GENERATE_TYPE_INTERFACE) {
+    await genPromise
+  }
 
   logger.info('✨ Starting server')
   const app = await buildApp()

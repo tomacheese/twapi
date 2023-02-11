@@ -21,6 +21,9 @@ const compileOptions: Partial<Options> = {
 }
 
 async function getJSONFiles(directory: string) {
+  if (!fs.existsSync(directory)) {
+    return []
+  }
   const files = fs.readdirSync(directory)
   const results: string[] = []
   for (const file of files) {

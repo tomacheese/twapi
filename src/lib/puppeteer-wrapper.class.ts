@@ -313,13 +313,16 @@ const wrappers: {
 } = {}
 
 setInterval(() => {
+  const logger = Logger.configure('WrapperAutoCloser')
   for (const key of Object.keys(wrappers)) {
     const wrapper = wrappers[key]
     if (wrapper.isClosed()) {
+      logger.info(`🗑 Delete closed wrapper for screen ${wrapper}`)
       delete wrappers[key]
     }
     // 1時間経過したら自動クローズ
     if (wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60) {
+      logger.info(`🗑 Delete wrapper for screen ${wrapper}`)
       wrapper.close()
       delete wrappers[key]
     }
@@ -333,10 +336,14 @@ async function getNextScreen() {
 }
 
 export async function getWrapper(options: PuppeteerWrapperOptions) {
+  const logger = Logger.configure('getWrapper')
+  logger.info(`✨ Get wrapper for ${options.user}`)
   if (wrappers[options.user] && !wrappers[options.user].isClosed()) {
+    logger.info(`📕 Use existing wrapper for ${options.user}`)
     return wrappers[options.user]
   }
   const screen = await getNextScreen()
+  logger.info(`🔢 Next screen is ${screen}`)
   const wrapper = await PuppeteerWrapper.init(screen, options)
   wrappers[options.user] = wrapper
   return wrapper

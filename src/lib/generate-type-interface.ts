@@ -12,7 +12,6 @@ const compileOptions: Partial<Options> = {
   bannerComment: '',
   additionalProperties: false,
   enableConstEnums: true,
-  format: true,
   strictIndexSignatures: true,
   style: {
     semi: false,

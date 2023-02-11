@@ -1723,6 +1723,10 @@ export interface GraphQLListLatestTweetsTimelineResponse {
                         }
                         in_reply_to_screen_name?: string
                         in_reply_to_user_id_str?: string
+                        in_reply_to_status_id_str?: string
+                        self_thread?: {
+                          id_str: string
+                        }
                       }
                       card?: {
                         rest_id: string

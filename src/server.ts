@@ -3,7 +3,7 @@ import { loadConfig } from './config'
 import { BaseRouter } from './lib/base-router'
 import cors from '@fastify/cors'
 import { UsersRouter } from './endpoints/users'
-import { getWrapper } from './lib/puppeteer-wrapper.class'
+import { PuppeteerWrapperManager } from './lib/puppeteer-wrapper.class'
 import { Logger } from './lib/logger'
 import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui'
@@ -22,7 +22,8 @@ import { SearchRouter } from './endpoints/search'
 export async function buildApp(): Promise<FastifyInstance> {
   const logger = Logger.configure('buildApp')
   const config = loadConfig()
-  const wrapper = await getWrapper({
+  const wrapperManager = new PuppeteerWrapperManager()
+  const wrapper = await wrapperManager.getWrapper({
     headless: false,
     user: config.twitter.username,
     auth: {
@@ -103,14 +104,14 @@ export async function buildApp(): Promise<FastifyInstance> {
 
   // routers
   const routers: BaseRouter[] = [
-    new UsersRouter(app, config, wrapper),
-    new TweetsRouter(app, config, wrapper),
-    new ListsRouter(app, config, wrapper),
-    new SearchRouter(app, config, wrapper),
+    new UsersRouter(app, config, wrapper, wrapperManager),
+    new TweetsRouter(app, config, wrapper, wrapperManager),
+    new ListsRouter(app, config, wrapper, wrapperManager),
+    new SearchRouter(app, config, wrapper, wrapperManager),
   ]
 
   if (process.env.NODE_ENV === 'development') {
-    routers.push(new DebugRouter(app, config, wrapper))
+    routers.push(new DebugRouter(app, config, wrapper, wrapperManager))
   }
 
   for (const router of routers) {

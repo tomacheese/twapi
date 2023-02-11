@@ -187,6 +187,7 @@ export interface GraphQLListByRestIdResponse {
       is_member: boolean
       subscriber_count: number
       muting: boolean
+      pinning?: boolean
     }
   }
 }

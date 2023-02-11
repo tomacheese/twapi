@@ -1,7 +1,6 @@
 import { BaseRouter } from '@/lib/base-router'
 import { GraphQLResponse } from '@/lib/graphql-response'
 import { Logger } from '@/lib/logger'
-import { getWrapper } from '@/lib/puppeteer-wrapper.class'
 import { Utils } from '@/lib/utils'
 import { GetListTweetsResponse } from '@/models/endpoints/lists'
 import { CustomGraphQLListTweet } from '@/models/response/custom/custom-graphql-list-tweets'
@@ -41,7 +40,7 @@ export class ListsRouter extends BaseRouter {
       })
       return
     }
-    const wrapper = await getWrapper({
+    const wrapper = await this.wrapperManager.getWrapper({
       headless: true,
       user: account.username,
       auth: {

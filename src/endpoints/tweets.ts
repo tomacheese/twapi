@@ -1,6 +1,5 @@
 import { BaseRouter } from '@/lib/base-router'
 import { GraphQLResponse } from '@/lib/graphql-response'
-import { getWrapper } from '@/lib/puppeteer-wrapper.class'
 import { Utils } from '@/lib/utils'
 import { GetTweetResponse } from '@/models/endpoints/tweets'
 import { CustomGraphQLTweetDetail } from '@/models/response/custom/custom-graphql-tweet-detail'
@@ -62,7 +61,7 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const wrapper = await getWrapper({
+    const wrapper = await this.wrapperManager.getWrapper({
       headless: true,
       user: account.username,
       auth: {
@@ -126,7 +125,7 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const wrapper = await getWrapper({
+    const wrapper = await this.wrapperManager.getWrapper({
       headless: true,
       user: account.username,
       auth: {
@@ -190,7 +189,7 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const wrapper = await getWrapper({
+    const wrapper = await this.wrapperManager.getWrapper({
       headless: true,
       user: account.username,
       auth: {
@@ -246,7 +245,7 @@ export class TweetsRouter extends BaseRouter {
       })
       return
     }
-    const wrapper = await getWrapper({
+    const wrapper = await this.wrapperManager.getWrapper({
       headless: true,
       user: account.username,
       auth: {

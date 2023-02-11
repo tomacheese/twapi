@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import puppeteer, { Browser, Page } from 'puppeteer-core'
 import { authenticator } from 'otplib'
 import { Logger } from './logger'
-import { ChildProcess, spawn } from 'node:child_process'
+import { ChildProcess, execSync, spawn } from 'node:child_process'
 
 export interface AuthConfig {
   password?: string
@@ -27,6 +27,7 @@ export class PuppeteerWrapper {
   private browser: Browser
   private options: PuppeteerWrapperOptions
   private xvfbProcess: ChildProcess | undefined
+  private restarting = false
   private closed = false
   public readonly screen: number
   public readonly createdAt = new Date()
@@ -46,9 +47,13 @@ export class PuppeteerWrapper {
       if (this.closed) {
         return
       }
+      if (this.restarting) {
+        return
+      }
       PuppeteerWrapper.logger.info(
         '🔌 Browser disconnected (disconnect event). Restarting...'
       )
+      this.restarting = true
       PuppeteerWrapper.startXvfbProcess(screen).then((xvfbProcess) => {
         this.xvfbProcess = xvfbProcess
         PuppeteerWrapper.getBrowser(
@@ -84,7 +89,25 @@ export class PuppeteerWrapper {
     this.closed = true
     await this.browser.close()
     if (this.xvfbProcess) {
-      this.xvfbProcess.kill()
+      // 停止させて、3秒しても終了しなければ強制終了
+      const promise = new Promise<void>((resolve) => {
+        const timeout = setTimeout(() => {
+          if (!this.xvfbProcess || this.xvfbProcess.killed) {
+            resolve()
+            return
+          }
+          this.xvfbProcess.kill('SIGKILL')
+          resolve()
+        }, 3000)
+        if (this.xvfbProcess) {
+          this.xvfbProcess.on('close', () => {
+            clearTimeout(timeout)
+            resolve()
+          })
+        }
+      })
+      this.xvfbProcess.kill('SIGTERM')
+      await promise
     }
   }
 
@@ -152,9 +175,11 @@ export class PuppeteerWrapper {
   private static async startXvfbProcess(screen: number): Promise<ChildProcess> {
     const logger = Logger.configure(`Xvfb:${screen}`)
 
-    if (await PuppeteerWrapper.isRunningXvfbProcess(screen)) {
+    const pid = await PuppeteerWrapper.getRunningXvfbProcessPid(screen)
+    logger.info(`pid: ${pid}`)
+    if (pid) {
       logger.info(
-        `🖥️ Xvfb process is already running on screen ${screen}. Restarting process...`
+        `🖥️ Xvfb process is already running on screen ${screen} (Pid: ${pid}). Restarting process...`
       )
 
       await PuppeteerWrapper.stopXvfbProcess(screen)
@@ -189,9 +214,26 @@ export class PuppeteerWrapper {
     logger.info(`🖥️ Stop Xvfb process on screen ${screen}`)
 
     const pid = await PuppeteerWrapper.getRunningXvfbProcessPid(screen)
-    if (pid) {
-      logger.info(`🖥️ Kill Xvfb process on screen ${screen} (pid: ${pid})`)
-      process.kill(pid)
+    try {
+      const promise = new Promise<void>((resolve) => {
+        setTimeout(() => {
+          // 3秒しても終了しなければ強制終了
+          if (!pid) {
+            resolve()
+            return
+          }
+          try {
+            execSync(`kill -9 ${pid}`) // SIGKILL
+          } catch {}
+          resolve()
+        }, 3000)
+      })
+      if (pid) {
+        execSync(`kill ${pid}`) // SIGTERM
+      }
+      await promise
+    } catch (error) {
+      logger.error('Failed to stop Xvfb process', error as Error)
     }
 
     if (fs.existsSync(`/tmp/.X${screen}-lock`)) {
@@ -209,20 +251,17 @@ export class PuppeteerWrapper {
     return new Promise<number | null>((resolve) => {
       process.stdout?.on('data', (data) => {
         // "   10 root      0:02 Xvfb :0 -ac -screen 0 600x800x16 -listen tcp"
-        const pid = data.toString().split(' ')[1]
+        const pid = data.toString().trim().split(' ')[0]
         resolve(Number.parseInt(pid, 10))
       })
       process.on('close', (code) => {
         if (code !== 0) {
-          resolve(null)
+          setTimeout(() => {
+            resolve(null)
+          }, 500)
         }
       })
     })
-  }
-
-  private static async isRunningXvfbProcess(screen: number) {
-    const pid = await PuppeteerWrapper.getRunningXvfbProcessPid(screen)
-    return pid !== null
   }
 
   private static async getBrowser(

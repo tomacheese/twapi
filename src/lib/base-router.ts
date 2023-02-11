@@ -1,6 +1,9 @@
 import { Configuration } from '@/config'
 import { FastifyInstance } from 'fastify'
-import { PuppeteerWrapper } from './puppeteer-wrapper.class'
+import {
+  PuppeteerWrapper,
+  PuppeteerWrapperManager,
+} from './puppeteer-wrapper.class'
 
 /**
  * REST API ルーターの基底クラス
@@ -9,15 +12,18 @@ export abstract class BaseRouter {
   protected fastify: FastifyInstance
   protected config: Configuration
   protected wrapper: PuppeteerWrapper
+  protected wrapperManager: PuppeteerWrapperManager
 
   constructor(
     fastify: FastifyInstance,
     config: Configuration,
-    wrapper: PuppeteerWrapper
+    wrapper: PuppeteerWrapper,
+    wrapperManager: PuppeteerWrapperManager
   ) {
     this.fastify = fastify
     this.config = config
     this.wrapper = wrapper
+    this.wrapperManager = wrapperManager
   }
 
   /**

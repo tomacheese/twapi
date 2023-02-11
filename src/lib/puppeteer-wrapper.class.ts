@@ -308,43 +308,56 @@ export class PuppeteerWrapper {
   }
 }
 
-const wrappers: {
-  [key: string]: PuppeteerWrapper
-} = {}
+export class PuppeteerWrapperManager {
+  private static wrappers: {
+    [key: string]: PuppeteerWrapper
+  } = {}
 
-setInterval(() => {
-  const logger = Logger.configure('WrapperAutoCloser')
-  for (const key of Object.keys(wrappers)) {
-    const wrapper = wrappers[key]
-    if (wrapper.isClosed()) {
-      logger.info(`🗑 Delete closed wrapper for screen ${wrapper}`)
-      delete wrappers[key]
-    }
-    // 1時間経過したら自動クローズ
-    if (wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60) {
-      logger.info(`🗑 Delete wrapper for screen ${wrapper}`)
-      wrapper.close()
-      delete wrappers[key]
-    }
+  constructor() {
+    setInterval(() => {
+      const logger = Logger.configure('WrapperAutoCloser')
+      for (const key of Object.keys(PuppeteerWrapperManager.wrappers)) {
+        const wrapper = PuppeteerWrapperManager.wrappers[key]
+        if (wrapper.isClosed()) {
+          logger.info(`🗑 Delete closed wrapper for screen ${wrapper}`)
+          delete PuppeteerWrapperManager.wrappers[key]
+        }
+        // 1時間経過したら自動クローズ
+        if (wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60) {
+          logger.info(`🗑 Delete wrapper for screen ${wrapper}`)
+          wrapper.close()
+          delete PuppeteerWrapperManager.wrappers[key]
+        }
+      }
+    }, 1000)
   }
-}, 1000)
 
-async function getNextScreen() {
-  const screens = Object.values(wrappers).map((wrapper) => wrapper.screen)
-  // 0 はデフォルトのディスプレイ
-  return Math.max(...screens, -1) + 1
-}
-
-export async function getWrapper(options: PuppeteerWrapperOptions) {
-  const logger = Logger.configure('getWrapper')
-  logger.info(`✨ Get wrapper for ${options.user}`)
-  if (wrappers[options.user] && !wrappers[options.user].isClosed()) {
-    logger.info(`📕 Use existing wrapper for ${options.user}`)
-    return wrappers[options.user]
+  public async getWrapper(options: PuppeteerWrapperOptions) {
+    const logger = Logger.configure('getWrapper')
+    logger.info(`✨ Get wrapper for ${options.user}`)
+    if (
+      PuppeteerWrapperManager.wrappers[options.user] &&
+      !PuppeteerWrapperManager.wrappers[options.user].isClosed()
+    ) {
+      logger.info(`📕 Use existing wrapper for ${options.user}`)
+      return PuppeteerWrapperManager.wrappers[options.user]
+    }
+    const screen = this.getNextScreen()
+    const screens = Object.values(PuppeteerWrapperManager.wrappers)
+      .map((wrapper) => wrapper.screen)
+      .join(', ')
+    logger.info(`🔢 Next screen is ${screen} (Screens: ${screens})`)
+    const wrapper = await PuppeteerWrapper.init(screen, options)
+    PuppeteerWrapperManager.wrappers[options.user] = wrapper
+    return wrapper
   }
-  const screen = await getNextScreen()
-  logger.info(`🔢 Next screen is ${screen}`)
-  const wrapper = await PuppeteerWrapper.init(screen, options)
-  wrappers[options.user] = wrapper
-  return wrapper
+
+  private getNextScreen() {
+    const screens = Object.values(PuppeteerWrapperManager.wrappers).map(
+      (wrapper) => wrapper.screen
+    )
+    // 0 はデフォルトのディスプレイ
+    if (screens.length === 0) return 0
+    return Math.max(...screens) + 1
+  }
 }

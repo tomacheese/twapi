@@ -49,6 +49,11 @@ export class PuppeteerWrapper {
       PuppeteerWrapper.logger.info(
         '🔌 Browser disconnected (disconnect event). Reconnecting...'
       )
+      if (!fs.existsSync(`/tmp/.X${screen}-lock`)) {
+        PuppeteerWrapper.logger.warn(`❌ Xvfb process is not running. skip`)
+        this.closed = true
+        return
+      }
       PuppeteerWrapper.getBrowser(
         `/data/userdata/${options.user}`,
         options
@@ -66,6 +71,11 @@ export class PuppeteerWrapper {
       PuppeteerWrapper.logger.info(
         '🔌 Browser disconnected (check connected). Reconnecting...'
       )
+      if (!fs.existsSync(`/tmp/.X${screen}-lock`)) {
+        PuppeteerWrapper.logger.warn(`❌ Xvfb process is not running. skip`)
+        this.closed = true
+        return
+      }
       PuppeteerWrapper.getBrowser(
         `/data/userdata/${options.user}`,
         options

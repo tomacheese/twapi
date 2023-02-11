@@ -1,8 +1,8 @@
 #!/bin/sh
 rm /tmp/.X*-lock || true
 
-Xvfb :0 -ac -screen 0 600x800x16 -listen tcp &
-x11vnc -rfbport 5900 -forever -noxdamage -display :0 -nopw -loop -xkb &
+# Xvfb :0 -ac -screen 0 600x800x16 -listen tcp &
+x11vnc -rfbport 5900 -forever -noxdamage -display :0 -nopw -loop -xkb 1>/dev/null 2>&1 &
 
 rm -rf /data/userdata/*/Singleton* || true
 

@@ -42,24 +42,28 @@ export class PuppeteerWrapper {
     this.screen = screen
     this.xvfbProcess = xvfbProcess
 
-    this.browser.on('disconnected', () => {
+    const restartBrowser = async () => {
       if (this.closed) {
         return
       }
       PuppeteerWrapper.logger.info(
-        '🔌 Browser disconnected (disconnect event). Reconnecting...'
+        '🔌 Browser disconnected (disconnect event). Restarting...'
       )
-      if (!fs.existsSync(`/tmp/.X${screen}-lock`)) {
-        PuppeteerWrapper.logger.warn(`❌ Xvfb process is not running. skip`)
-        this.closed = true
-        return
-      }
-      PuppeteerWrapper.getBrowser(
-        `/data/userdata/${options.user}`,
-        options
-      ).then((browser) => {
-        this.browser = browser
+      PuppeteerWrapper.startXvfbProcess(screen).then((xvfbProcess) => {
+        this.xvfbProcess = xvfbProcess
+        PuppeteerWrapper.getBrowser(
+          `/data/userdata/${options.user}`,
+          options
+        ).then((browser) => {
+          this.browser = browser
+
+          PuppeteerWrapper.logger.info('🔌 Browser restarted.')
+        })
       })
+    }
+
+    this.browser.on('disconnected', () => {
+      restartBrowser()
     })
     setInterval(() => {
       const isConnected = this.browser.isConnected()
@@ -68,20 +72,7 @@ export class PuppeteerWrapper {
         return
       }
 
-      PuppeteerWrapper.logger.info(
-        '🔌 Browser disconnected (check connected). Reconnecting...'
-      )
-      if (!fs.existsSync(`/tmp/.X${screen}-lock`)) {
-        PuppeteerWrapper.logger.warn(`❌ Xvfb process is not running. skip`)
-        this.closed = true
-        return
-      }
-      PuppeteerWrapper.getBrowser(
-        `/data/userdata/${options.user}`,
-        options
-      ).then((browser) => {
-        this.browser = browser
-      })
+      restartBrowser()
     }, 10_000)
   }
 
@@ -145,32 +136,7 @@ export class PuppeteerWrapper {
       puppeteerArguments.push('--proxy-server=' + options.proxy.server)
     }
 
-    let xvfbProcess: ChildProcess | undefined
-    if (screen !== 0) {
-      const logger = Logger.configure(`Xvfb:${screen}`)
-      logger.info(`🖥️ Start Xvfb process on screen ${screen}`)
-      // rm /tmp/.X*-lock
-      if (fs.existsSync(`/tmp/.X${screen}-lock`)) {
-        fs.unlinkSync(`/tmp/.X${screen}-lock`)
-      }
-
-      xvfbProcess = spawn(
-        `Xvfb`,
-        [`:${screen}`, '-ac', '-screen', '0', '600x800x16', '-listen', 'tcp'],
-        {
-          stdio: 'pipe',
-        }
-      )
-      xvfbProcess.stdout?.on('data', (data) => {
-        logger.info(data.toString())
-      })
-      xvfbProcess.stderr?.on('data', (data) => {
-        logger.error(data.toString())
-      })
-      xvfbProcess.on('close', (code) => {
-        logger.info(`Xvfb process exited with code ${code}`)
-      })
-    }
+    const xvfbProcess = await PuppeteerWrapper.startXvfbProcess(screen)
 
     const display = `:${screen}`
     process.env.DISPLAY = display
@@ -181,6 +147,82 @@ export class PuppeteerWrapper {
     )
 
     return new PuppeteerWrapper(browser, options, screen, xvfbProcess)
+  }
+
+  private static async startXvfbProcess(screen: number): Promise<ChildProcess> {
+    const logger = Logger.configure(`Xvfb:${screen}`)
+
+    if (await PuppeteerWrapper.isRunningXvfbProcess(screen)) {
+      logger.info(
+        `🖥️ Xvfb process is already running on screen ${screen}. Restarting process...`
+      )
+
+      await PuppeteerWrapper.stopXvfbProcess(screen)
+    }
+    logger.info(`🖥️ Start Xvfb process on screen ${screen}`)
+    // rm /tmp/.X*-lock
+    if (fs.existsSync(`/tmp/.X${screen}-lock`)) {
+      fs.unlinkSync(`/tmp/.X${screen}-lock`)
+    }
+
+    const xvfbProcess = spawn(
+      `Xvfb`,
+      [`:${screen}`, '-ac', '-screen', '0', '600x800x16', '-listen', 'tcp'],
+      {
+        stdio: 'pipe',
+      }
+    )
+    xvfbProcess.stdout?.on('data', (data) => {
+      logger.info(data.toString())
+    })
+    xvfbProcess.stderr?.on('data', (data) => {
+      logger.error(data.toString())
+    })
+    xvfbProcess.on('close', (code) => {
+      logger.info(`Xvfb process exited with code ${code}`)
+    })
+    return xvfbProcess
+  }
+
+  private static async stopXvfbProcess(screen: number) {
+    const logger = Logger.configure(`Xvfb:${screen}`)
+    logger.info(`🖥️ Stop Xvfb process on screen ${screen}`)
+
+    const pid = await PuppeteerWrapper.getRunningXvfbProcessPid(screen)
+    if (pid) {
+      logger.info(`🖥️ Kill Xvfb process on screen ${screen} (pid: ${pid})`)
+      process.kill(pid)
+    }
+
+    if (fs.existsSync(`/tmp/.X${screen}-lock`)) {
+      fs.unlinkSync(`/tmp/.X${screen}-lock`)
+    }
+  }
+
+  private static async getRunningXvfbProcessPid(screen: number) {
+    const process = spawn(
+      `ps -ef | grep Xvfb | grep :${screen} | grep -v grep`,
+      {
+        shell: true,
+      }
+    )
+    return new Promise<number | null>((resolve) => {
+      process.stdout?.on('data', (data) => {
+        // "   10 root      0:02 Xvfb :0 -ac -screen 0 600x800x16 -listen tcp"
+        const pid = data.toString().split(' ')[1]
+        resolve(Number.parseInt(pid, 10))
+      })
+      process.on('close', (code) => {
+        if (code !== 0) {
+          resolve(null)
+        }
+      })
+    })
+  }
+
+  private static async isRunningXvfbProcess(screen: number) {
+    const pid = await PuppeteerWrapper.getRunningXvfbProcessPid(screen)
+    return pid !== null
   }
 
   private static async getBrowser(

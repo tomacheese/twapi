@@ -37,7 +37,9 @@ export class SearchRouter extends BaseRouter {
     const page = await this.wrapper.newPage()
 
     const restResponse = new RestResponse(page, 'SearchAdaptive')
-    const url = `https://twitter.com/search?q=${encodeURIComponent(q)}&f=live`
+    const url = `https://twitter.com/search?q=${encodeURIComponent(
+      q
+    )}&src=typed_query&f=live`
     await page.goto(url, { waitUntil: 'networkidle2' })
 
     const scrollInterval = setInterval(async () => {

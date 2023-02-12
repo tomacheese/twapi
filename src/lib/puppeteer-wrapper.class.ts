@@ -413,8 +413,11 @@ export class PuppeteerWrapperManager {
           logger.info(`🗑 Delete closed wrapper for screen ${wrapper}`)
           delete PuppeteerWrapperManager.wrappers[key]
         }
-        // 1時間経過したら自動クローズ
-        if (wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60) {
+        // screen != 0 で、 1時間経過したら自動クローズ
+        if (
+          key !== '0' &&
+          wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60
+        ) {
           logger.info(`🗑 Delete wrapper for screen ${wrapper}`)
           wrapper.close()
           delete PuppeteerWrapperManager.wrappers[key]

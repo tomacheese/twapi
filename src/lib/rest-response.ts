@@ -71,7 +71,12 @@ export class RestResponse<T extends RestEndPoint> {
         .map((s) => s[0].toUpperCase() + s.slice(1))
         .join('')
 
-      const text = await response.text()
+      let text
+      try {
+        text = await response.text()
+      } catch {
+        return
+      }
       const path = `/data/debug/rest/${resultEndpoint}/${Date.now()}.json`
       fs.mkdirSync(dirname(path), { recursive: true })
       fs.writeFileSync(path, text)

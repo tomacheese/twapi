@@ -95,7 +95,12 @@ export class GraphQLResponse<T extends GraphQLEndPoint> {
         return
       }
 
-      const text = await response.text()
+      let text
+      try {
+        text = await response.text()
+      } catch {
+        return
+      }
       const path = `/data/debug/graphql/${match[1]}/${Date.now()}.json`
       fs.mkdirSync(dirname(path), { recursive: true })
       fs.writeFileSync(path, text)

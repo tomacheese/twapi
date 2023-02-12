@@ -79,6 +79,30 @@ export class PuppeteerWrapper {
 
       restartBrowser()
     }, 10_000)
+
+    // screen 0 がクローズしたら必ず立て直す
+    if (screen === 0) {
+      setInterval(() => {
+        if (this.closed) {
+          return
+        }
+        if (this.restarting) {
+          return
+        }
+        this.restarting = true
+        PuppeteerWrapper.startXvfbProcess(screen).then((xvfbProcess) => {
+          this.xvfbProcess = xvfbProcess
+          PuppeteerWrapper.getBrowser(
+            `/data/userdata/${options.user}`,
+            options
+          ).then((browser) => {
+            this.browser = browser
+
+            PuppeteerWrapper.logger.info('🔌 Browser restarted.')
+          })
+        })
+      }, 10_000)
+    }
   }
 
   public async newPage() {
@@ -444,6 +468,10 @@ export class PuppeteerWrapperManager {
     const wrapper = await PuppeteerWrapper.init(screen, options)
     PuppeteerWrapperManager.wrappers[options.user] = wrapper
     return wrapper
+  }
+
+  public getWrappers() {
+    return PuppeteerWrapperManager.wrappers
   }
 
   private getNextScreen() {

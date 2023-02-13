@@ -188,9 +188,9 @@ export class PuppeteerWrapper {
       puppeteerArguments.push('--proxy-server=' + options.proxy.server)
     }
 
-    const xvfbProcess = await PuppeteerWrapper.startXvfbProcess(screen)
+    const xvfbProcess = await PuppeteerWrapper.startXvfbProcess(screen, true)
     if (!xvfbProcess) {
-      throw new Error('Failed to start Xvfb process.')
+      throw new Error('Xvfb process is not running.')
     }
 
     const display = `:${screen}`
@@ -440,18 +440,18 @@ export class PuppeteerWrapper {
 }
 
 export class PuppeteerWrapperManager {
-  private static wrappers: {
+  private wrappers: {
     [key: string]: PuppeteerWrapper
   } = {}
 
   constructor() {
     setInterval(() => {
       const logger = Logger.configure('WrapperAutoCloser')
-      for (const key of Object.keys(PuppeteerWrapperManager.wrappers)) {
-        const wrapper = PuppeteerWrapperManager.wrappers[key]
+      for (const key of Object.keys(this.wrappers)) {
+        const wrapper = this.wrappers[key]
         if (wrapper.isClosed()) {
           logger.info(`🗑 Delete closed wrapper for screen ${wrapper.screen}`)
-          delete PuppeteerWrapperManager.wrappers[key]
+          delete this.wrappers[key]
         }
         // screen != 0 で、 1時間経過したら自動クローズ
         if (
@@ -460,7 +460,7 @@ export class PuppeteerWrapperManager {
         ) {
           logger.info(`🗑 Delete wrapper for screen ${wrapper.screen}`)
           wrapper.close()
-          delete PuppeteerWrapperManager.wrappers[key]
+          delete this.wrappers[key]
         }
       }
     }, 1000)
@@ -468,30 +468,34 @@ export class PuppeteerWrapperManager {
 
   public async getWrapper(options: PuppeteerWrapperOptions) {
     const logger = Logger.configure('getWrapper')
-    logger.info(`✨ Get wrapper for ${options.user}`)
+    logger.info(
+      `✨ Get wrapper for ${options.user}. Known wrappers: ${Object.keys(
+        this.wrappers
+      ).join(', ')}`
+    )
     if (
-      PuppeteerWrapperManager.wrappers[options.user] &&
-      !PuppeteerWrapperManager.wrappers[options.user].isClosed()
+      this.wrappers[options.user] &&
+      !this.wrappers[options.user].isClosed()
     ) {
       logger.info(`📕 Use existing wrapper for ${options.user}`)
-      return PuppeteerWrapperManager.wrappers[options.user]
+      return this.wrappers[options.user]
     }
     const screen = this.getNextScreen()
-    const screens = Object.values(PuppeteerWrapperManager.wrappers)
+    const screens = Object.values(this.wrappers)
       .map((wrapper) => wrapper.screen)
       .join(', ')
     logger.info(`🔢 Next screen is ${screen} (Screens: ${screens})`)
     const wrapper = await PuppeteerWrapper.init(screen, options)
-    PuppeteerWrapperManager.wrappers[options.user] = wrapper
+    this.wrappers[options.user] = wrapper
     return wrapper
   }
 
   public getWrappers() {
-    return PuppeteerWrapperManager.wrappers
+    return this.wrappers
   }
 
   private getNextScreen() {
-    const screens = Object.values(PuppeteerWrapperManager.wrappers).map(
+    const screens = Object.values(this.wrappers).map(
       (wrapper) => wrapper.screen
     )
     // 0 はデフォルトのディスプレイ

@@ -55,7 +55,9 @@ export class PuppeteerWrapper {
       )
       this.restarting = true
       PuppeteerWrapper.startXvfbProcess(screen).then((xvfbProcess) => {
-        this.xvfbProcess = xvfbProcess
+        if (xvfbProcess) {
+          this.xvfbProcess = xvfbProcess
+        }
         PuppeteerWrapper.getBrowser(
           `/data/userdata/${options.user}`,
           options
@@ -83,7 +85,7 @@ export class PuppeteerWrapper {
     // screen 0 がクローズしたら必ず立て直す
     if (screen === 0) {
       setInterval(() => {
-        if (this.closed) {
+        if (!this.closed) {
           return
         }
         if (this.restarting) {
@@ -91,7 +93,10 @@ export class PuppeteerWrapper {
         }
         this.restarting = true
         PuppeteerWrapper.startXvfbProcess(screen).then((xvfbProcess) => {
-          this.xvfbProcess = xvfbProcess
+          if (xvfbProcess) {
+            this.xvfbProcess = xvfbProcess
+          }
+
           PuppeteerWrapper.getBrowser(
             `/data/userdata/${options.user}`,
             options
@@ -184,6 +189,9 @@ export class PuppeteerWrapper {
     }
 
     const xvfbProcess = await PuppeteerWrapper.startXvfbProcess(screen)
+    if (!xvfbProcess) {
+      throw new Error('Failed to start Xvfb process.')
+    }
 
     const display = `:${screen}`
     process.env.DISPLAY = display
@@ -196,16 +204,24 @@ export class PuppeteerWrapper {
     return new PuppeteerWrapper(browser, options, screen, xvfbProcess)
   }
 
-  private static async startXvfbProcess(screen: number): Promise<ChildProcess> {
+  private static async startXvfbProcess(
+    screen: number,
+    force = false
+  ): Promise<ChildProcess | null> {
     const logger = Logger.configure(`Xvfb:${screen}`)
 
     const pid = await PuppeteerWrapper.getRunningXvfbProcessPid(screen)
     logger.info(`pid: ${pid}`)
     if (pid) {
       logger.info(
-        `🖥️ Xvfb process is already running on screen ${screen} (Pid: ${pid}). Restarting process...`
+        `🖥️ Xvfb process is already running on screen ${screen} (Pid: ${pid}).`
       )
 
+      if (!force) {
+        return null
+      }
+
+      logger.info(`🖥️ Stopping Xvfb process...`)
       await PuppeteerWrapper.stopXvfbProcess(screen)
     }
     logger.info(`🖥️ Start Xvfb process on screen ${screen}`)
@@ -434,7 +450,7 @@ export class PuppeteerWrapperManager {
       for (const key of Object.keys(PuppeteerWrapperManager.wrappers)) {
         const wrapper = PuppeteerWrapperManager.wrappers[key]
         if (wrapper.isClosed()) {
-          logger.info(`🗑 Delete closed wrapper for screen ${wrapper}`)
+          logger.info(`🗑 Delete closed wrapper for screen ${wrapper.screen}`)
           delete PuppeteerWrapperManager.wrappers[key]
         }
         // screen != 0 で、 1時間経過したら自動クローズ
@@ -442,7 +458,7 @@ export class PuppeteerWrapperManager {
           wrapper.screen !== 0 &&
           wrapper.createdAt.getTime() < Date.now() - 1000 * 60 * 60
         ) {
-          logger.info(`🗑 Delete wrapper for screen ${wrapper}`)
+          logger.info(`🗑 Delete wrapper for screen ${wrapper.screen}`)
           wrapper.close()
           delete PuppeteerWrapperManager.wrappers[key]
         }

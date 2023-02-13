@@ -218,7 +218,6 @@ export class TweetsRouter extends BaseRouter {
         .catch(() => null),
     ])
     await page.close()
-    await wrapper.close()
 
     if (result === 'ALREADY_LIKED') {
       reply.code(409).send({

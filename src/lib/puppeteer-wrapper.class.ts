@@ -72,6 +72,11 @@ export class PuppeteerWrapper {
     this.browser.on('disconnected', () => {
       restartBrowser()
     })
+    if (this.xvfbProcess) {
+      this.xvfbProcess?.on('close', () => {
+        restartBrowser()
+      })
+    }
     setInterval(() => {
       const isConnected = this.browser.isConnected()
 

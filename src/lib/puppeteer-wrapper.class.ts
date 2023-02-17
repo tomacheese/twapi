@@ -43,7 +43,7 @@ export class PuppeteerWrapper {
     this.screen = screen
     this.xvfbProcess = xvfbProcess
 
-    const restartBrowser = async () => {
+    const restartBrowser = () => {
       if (this.closed) {
         return
       }
@@ -89,28 +89,11 @@ export class PuppeteerWrapper {
 
     // screen 0 がクローズしたら必ず立て直す
     if (screen === 0) {
-      setInterval(() => {
-        if (!this.closed) {
+      setInterval(async () => {
+        if (!this.browser || this.browser.isConnected()) {
           return
         }
-        if (this.restarting) {
-          return
-        }
-        this.restarting = true
-        PuppeteerWrapper.startXvfbProcess(screen).then((xvfbProcess) => {
-          if (xvfbProcess) {
-            this.xvfbProcess = xvfbProcess
-          }
-
-          PuppeteerWrapper.getBrowser(
-            `/data/userdata/${options.user}`,
-            options
-          ).then((browser) => {
-            this.browser = browser
-
-            PuppeteerWrapper.logger.info('🔌 Browser restarted.')
-          })
-        })
+        restartBrowser()
       }, 10_000)
     }
   }

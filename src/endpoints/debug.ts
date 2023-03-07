@@ -1,7 +1,7 @@
 import { BaseRouter } from '@/lib/base-router'
 import { generateTypeInterfaces } from '@/lib/generate-type-interface'
 import { GraphQLResponse } from '@/lib/graphql-response'
-import { Logger } from '@/lib/logger'
+import { Logger } from '@book000/node-utils'
 import { RestResponse } from '@/lib/rest-response'
 
 export class DebugRouter extends BaseRouter {

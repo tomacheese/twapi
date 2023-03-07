@@ -1,5 +1,5 @@
 import { BaseRouter } from '@/lib/base-router'
-import { Logger } from '@/lib/logger'
+import { Logger } from '@book000/node-utils'
 import { RestResponse } from '@/lib/rest-response'
 import { Utils } from '@/lib/utils'
 import { GetListTweetsResponse } from '@/models/endpoints/lists'

@@ -25,6 +25,7 @@
     "fix:prettier": "prettier --write src"
   },
   "devDependencies": {
+    "@book000/node-utils": "1.0.4",
     "@fastify/basic-auth": "5.0.0",
     "@fastify/cors": "8.2.0",
     "@fastify/swagger": "8.3.1",
@@ -44,7 +45,6 @@
     "fastify": "4.14.1",
     "genson-js": "0.0.8",
     "json-schema-to-typescript": "12.0.0",
-    "logform": "2.5.1",
     "otplib": "12.0.1",
     "prettier": "2.8.4",
     "puppeteer-core": "19.7.3",
@@ -53,8 +53,6 @@
     "twitter-d": "0.6.0",
     "typescript": "4.9.5",
     "typescript-json-schema": "0.55.0",
-    "winston": "3.8.2",
-    "winston-daily-rotate-file": "4.7.1",
     "yarn-run-all": "3.1.1"
   }
 }

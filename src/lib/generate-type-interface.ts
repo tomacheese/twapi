@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import { createCompoundSchema } from 'genson-js'
 import { compile, Options } from 'json-schema-to-typescript'
-import { Logger } from '@/lib/logger'
+import { Logger } from '@book000/node-utils'
 import { dirname } from 'node:path'
 import { Utils } from './utils'
 import { GraphQLTweetDetailResponse } from '@/models/response/graphql/tweet-detail'

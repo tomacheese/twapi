@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import puppeteer, { Browser, Page } from 'puppeteer-core'
 import { authenticator } from 'otplib'
-import { Logger } from './logger'
+import { Logger } from '@book000/node-utils'
 import { ChildProcess, execSync, spawn } from 'node:child_process'
 
 export interface AuthConfig {

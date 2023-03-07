@@ -1,6 +1,6 @@
 import { BaseRouter } from '@/lib/base-router'
 import { GraphQLResponse } from '@/lib/graphql-response'
-import { Logger } from '@/lib/logger'
+import { Logger } from '@book000/node-utils'
 import { Utils } from '@/lib/utils'
 import { GetListTweetsResponse } from '@/models/endpoints/lists'
 import { CustomGraphQLListTweet } from '@/models/response/custom/custom-graphql-list-tweets'

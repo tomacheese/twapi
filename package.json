@@ -41,7 +41,7 @@
     "eslint-plugin-n": "15.6.1",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-unicorn": "46.0.0",
-    "fastify": "4.14.0",
+    "fastify": "4.14.1",
     "genson-js": "0.0.8",
     "json-schema-to-typescript": "12.0.0",
     "logform": "2.5.1",

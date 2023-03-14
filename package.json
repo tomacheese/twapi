@@ -27,7 +27,7 @@
   "devDependencies": {
     "@book000/node-utils": "1.2.0",
     "@fastify/basic-auth": "5.0.0",
-    "@fastify/cors": "8.2.0",
+    "@fastify/cors": "8.2.1",
     "@fastify/swagger": "8.3.1",
     "@fastify/swagger-ui": "1.5.0",
     "@types/node": "18.15.3",
